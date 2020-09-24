@@ -3,12 +3,13 @@ body {
     font-style: normal;
     font-weight: 400;
     font-size: 1rem;
-    display: grid;
-    color: red;
+    /*display: grid;*/
+    /*color: red;*/
     /* grid : repeat (3, 80px) / auto-flow; */
     /* grid-template-columns: 75% 20%  ; */
     /* grid-template-rows: 10vw 25vw 25vw; */
     /* grid-gap: 1em; */
+    margin: 0;
 }
 
 .button {
