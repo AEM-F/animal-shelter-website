@@ -1,26 +1,15 @@
 <!DOCTYPE html>
-<html lang="en"></html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animal-Shelter-HomePage</title>
-    <link rel="stylesheet" href="styleForPage.css" />
-    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
 </head>
-<!--
-<header>
-    <img src="https://images.unsplash.com/photo-1497752531616-c3afd9760a11?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9" width="150 px" height="100 px"> 
-
-    <div class="topnav">
-    <a class="button" href="Home.html"> Home </a>
-    <a class="button" href=""> Gallery </a>
-    <a class="button" href=""> Contact </a>
-    <a class="button" href=""> Donate </a>
-    <a class="button" href=""> LogIn</a>
-</div>
-</header>
--->
 <body>
     <div class="backdrop"></div>
     <header class="main-header">
@@ -46,10 +35,10 @@
                     <a href="blog/index.html">Blog</a>
                 </li>
                 <li class="main-nav_item main-nav_item--cta">
-                    <a href="donate/index.html">Donate</a>
+                    <a href="donate/index.html"><i class="fas fa-donate"></i>Donate</a>
                 </li>
                 <li class="main-nav_item main-nav_item--cta">
-                    <a href="log-in/index.html">Log In</a>
+                    <a href="log-in/index.html"><i class="fas fa-sign-in-alt"></i>Log In</a>
                 </li>
             </ul>
         </nav>
@@ -74,20 +63,90 @@
         </ul>
     </nav>
     <main>
-
-    <h1>This is a body</h1>
-
-    <p>I'm writing something</p>
-
-    <img src="https://i.redd.it/96ucs5d79jm51.jpg" width ="104" height="142">
+<div class="adv-showcase">
+    <button class="adv-donate-btn">
+        <i class="fas fa-donate"></i>Donate</button>
+</div>
+<div class="d-info">
+    <div class="d-medicine">
+        <h1 class="adv-title"><i class="fas fa-pills"></i>Medicine</h1>
+        <p>Giving oral medication to a cat or dog can be a challenge for a pet.
+            If the veterinarian recommends medication for your cat or dog, she/he has your pet's best interest in mind. Fortunately, pilling and treating a pet is not an impossible task once you learn a few tricks of the trade.</p>
+    </div>
+    <div class="d-food">
+        <h1 class="adv-title"><i class="fas fa-utensils"></i>Food</h1>
+        <p>To maximize pet quality lifespan, including vitality and longevity, we must focus on pet nutrition. 
+        Achieving these goals requires providing Quality Food daily, along with the "Live Nutrition" missing from Pet Foods. 
+        It may sound redundant, but we as pet owners should not overlook the importance of pet nutrition.</p>
+    </div>
+    <div class="d-toys">
+        <h1 class="adv-title"><i class="fas fa-bone"></i>Toys</h1>
+        <p>Although you may give your pets toys because you just like to watch them play, providing your cats and dogs with toys is actually very important. 
+            Playing with a fun toy can provide your animal with both physical and mental exercise, and both of these are key to maintaining good overall health in your cat or dog.</p>
+    </div>
+</div>
+<div class="new-pet">
+    <h1 class="new-pet-title">A new member from our family managed to get a new home</h1>
+    <article class="new-pet-card">
+        <img src="images/Maxy-dog-new.jpg" alt="Sample photo">
+        <div class="new-pet-text">
+          <h3>Mike Brandy</h3>
+          <p>Meet Mike Brandy! Mike is a friendly, 2-year-old Husky who is looking for his perfect home. He is good with other dogs, but has not been cat tested.</p>
+        </div>
+      </article>
+</div>
+<div class="f-pets">
+    <h1 class="f-pet-title">Check out some of our members!</h1>
+    <div class="f-pet-cards">
+        <article class="pet-card">
+            <img src="images/Mario.jpg" alt="Sample photo">
+            <div class="pet-text">
+              <h3>Mario</h3>
+              <p>Sex: M/F Breed: breedname Size: small/medium/large Age: nr.age.</p>
+              <a href="">More Info</a>
+            </div>
+          </article>
+          <article class="pet-card">
+            <img src="images/mia.jpg" alt="Sample photo">
+            <div class="pet-text">
+              <h3>Mia</h3>
+              <p>Sex: M/F Breed: breedname Size: small/medium/large Age: nr.age.</p>
+              <a href="">More Info</a>
+            </div>
+          </article>
+          <article class="pet-card">
+            <img src="images/penelope.jpg" alt="Sample photo">
+            <div class="pet-text">
+              <h3>Penelope</h3>
+              <p>Sex: M/F Breed: breedname Size: small/medium/large Age: nr.age.</p>
+              <a href="">More Info</a>
+            </div>
+          </article>
+    </div>
+</div>
 </main>
 <footer class="main-footer">
     <nav>
-        <ul class="main-footer_links">
-            <li class="main-footer_link">
-                <a href="#">In Progress</a>
-            </li>
-        </ul>
+        <div class="activity-tab">
+            <p>Do you want to know more of our activity?</p>
+            <button id="activity-find-out-btn">Find out</button>
+        <section id="social-features">
+            <div class="social-feature-list">
+                    <div class="social-feature-image">
+                        <a id="feature-fb" href=""><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                    <div class="social-feature-image sf-insta">
+                        <a id="feature-inst" href=""><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="social-feature-image">
+                        <a id="feature-twitter" href=""><i class="fab fa-twitter"></i></a>
+                    </div>
+                    <div class="social-feature-image">
+                        <a id="feature-yt" href=""><i class="fab fa-youtube"></i></a>
+                    </div>
+            </div>
+        </section>
+        </div>
     </nav>
 </footer>
 <script src="js/shared.js"></script>

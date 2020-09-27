@@ -1,0 +1,534 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  font-family: 'Kanit', sans-serif;
+  margin: 0;
+  background-color:whitesmoke;
+}
+
+main{
+  /* min-height: calc(100vh - 3.5rem - 8rem);
+  margin-top: 3.5rem; */
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 300px auto auto auto 600px 1500px;
+  grid-template-areas: "ad"
+                        "info"
+                        "info"
+                        "info"
+                        "news"
+                        "pets";
+}
+
+.backdrop {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+}
+/* navigation */
+.main-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #2ddf5c;
+  padding: 0.5rem 0.2rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /*border-bottom: 2px solid #ff1b6770;*/
+}
+
+.toggle-button {
+  width: 3rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding-top: 0;
+  padding-bottom: 0;
+  vertical-align: middle;
+}
+
+.toggle-button:focus {
+  outline: none;
+}
+
+.toggle-button_bar {
+  width: 100%;
+  height: 0.25rem;
+  background: black;
+  display: block;
+  margin: 0.5rem 0;
+  border-radius: 2px;
+}
+
+.main-header_brand {
+  color: #0e4f1f;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.5rem;
+  /* width: 20px; */
+}
+
+.main-header_brand img {
+  height: 2.5rem;
+  vertical-align: middle;
+  /* width: 100%; */
+}
+
+.main-nav {
+  display: none;
+}
+
+.main-nav_items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.main-nav_item {
+  margin: 0 1rem;
+}
+
+.main-nav_item a,
+.mobile-nav_item a {
+  text-decoration: none;
+  color: #0e4f1f;
+  font-weight: bold;
+  padding: 0.2rem 0;
+}
+
+.main-nav_item a:hover,
+.main-nav_item a:active {
+  color: white;
+  border-bottom: 3px solid white;
+}
+
+.main-nav_item--cta a,
+.mobile-nav_item--cta a {
+  color: white;
+  background: #ff1b68;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-family: 'Bangers', cursive;
+}
+
+.main-nav_item--cta a:hover,
+.main-nav_item--cta a:active,
+.mobile-nav_item--cta a:hover,
+.mobile-nav_item--cta a:active {
+  color: #ff1b68;
+  background: white;
+  border: none;
+}
+/* homepage content */
+
+/*Donations*/
+
+.adv-showcase{
+  grid-area: ad;
+  height: 300px;
+  display: flex;
+  background: url('images/pug.png') no-repeat center;
+  background-size: cover;
+  justify-content: center;
+  align-items: flex-end;
+  border-bottom: 3px solid #ff1b68;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.adv-donate-btn{
+  margin-bottom: 10px;
+  width: 140px;
+  height: 50px;
+  color: white;
+  background: #ff1b68;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.5rem;
+  font-family: 'Bangers', cursive;
+}
+
+.adv-donate-btn:hover{
+  color: #ff1b68;
+  background: whitesmoke;
+}
+
+.d-info{
+  padding-top: 1.2rem;
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+  justify-content: center;
+  color: whitesmoke;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.d-info > div{
+  height: 280px;
+  width: 300px;
+}
+
+.d-medicine{
+  background-color: #ff1b68;
+  border-radius: 10px;
+}
+
+.d-medicine:hover{
+  box-shadow: 2px 2px 6px 0px #ff1b68;
+}
+
+.d-food{
+  background-color: #2ddf5c;
+  border-radius: 10px;
+}
+
+.d-food:hover{
+  box-shadow: 2px 2px 6px 0px #0e4f1f;
+}
+
+.d-toys{
+  background-color: teal;
+  border-radius: 10px;
+}
+
+.d-toys:hover{
+  box-shadow: 2px 2px 6px 0px teal;
+}
+
+.adv-title{
+  font-weight: bold;
+  font-size: 1.5rem;
+  font-family: 'Bangers', cursive;
+  text-align: center;
+}
+
+.d-info > div > p{
+  text-align: center;
+  padding: 0 10px;
+  font-size: 0.9rem;
+}
+
+/*New pet card & featured pet cards*/
+
+.new-pet-title{
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: 'Bangers', cursive;
+  color: whitesmoke;
+  letter-spacing: 2px;
+  clip-path: polygon(100% 0, 100% 50%, 93% 100%, 0% 100%, 0 51%, 0% 0%);
+  background-color:#2ddf5c;
+  width: 100%;
+  padding: 10px;
+}
+
+.f-pet-title{
+  clip-path: polygon(100% 0, 100% 50%, 100% 100%, 7% 100%, 0 51%, 0% 0%);
+  font-size: 1.5rem;
+  padding: 10px;
+  text-align: center;
+  font-family: 'Bangers', cursive;
+  color: whitesmoke;
+  letter-spacing: 2px;
+  background-color: #ff1b68;
+}
+
+.new-pet{
+  grid-area: news;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-pet-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
+}
+
+.f-pet-cards{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.pet-card a{
+  text-decoration: none;
+  color: white;
+  background: #ff1b68;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-family: 'Bangers', cursive;
+}
+
+.pet-card:hover{
+  box-shadow: 0 0 6px 1px #ff1b68;
+}
+
+.pet-card a:hover{
+  color: #ff1b68;
+  background: whitesmoke;
+  border: 1px solid #ff1b68;
+}
+
+.new-pet-card,
+.pet-card{
+  /* flex: 0 0 200px; */
+  width: 300px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+}
+
+.pet-card img{
+  width: 100%;
+  height: 250px;
+  border-radius: 5px 5px 5px 5px;
+  border-bottom: 2px solid #ff1b68;
+}
+
+.new-pet-card img{
+  width: 100%;
+  height: 250px;
+  border-radius: 5px 5px 5px 5px;
+  border-bottom: 2px solid #2ddf5c;
+}
+
+.new-pet-text,
+.pet-text{
+  padding: 0 20px 20px;
+  text-align: center;
+}
+
+.pet-card h3{
+font-size: 1.5rem;
+text-align: center;
+font-family: 'Bangers', cursive;
+color: #ff1b68;
+}
+
+.new-pet-card h3{
+font-size: 1.5rem;
+text-align: center;
+font-family: 'Bangers', cursive;
+color: #2ddf5c;
+}
+.f-pets{
+  grid-area: pets;
+}
+
+/* footer section */
+.activity-tab{
+text-align: center;
+background-color: rgb(31, 31, 31);
+color: whitesmoke;
+border-radius: 20px 20px 0 0;
+}
+
+.activity-tab p{
+  padding-top: 20px;
+  font-size: 1.5rem;
+  font-family: 'Bangers', cursive;
+}
+
+#activity-find-out-btn{
+  width: 100px;
+  height: 40px;
+  background-color: #2ddf5c;
+  border-radius: 3px;
+  text-align: center;
+  border: 2px solid #2ddf5c;
+  font-size:1rem;
+  font-weight: bold;
+  font-family: 'Bangers', cursive;
+  color: whitesmoke;
+  cursor: pointer;
+  letter-spacing: 3px;
+}
+
+#activity-find-out-btn:hover{
+  background-color: whitesmoke;
+  color: #2ddf5c;
+}
+
+#social-features {
+  margin-top: 10px;
+  background: #ff1b68;
+  padding: 1rem;
+  border-radius: 60px 60px 0 0;
+}
+
+.social-feature-list {
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.social-feature-image {
+  background: #eeeeee;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #2e2e2e;
+  border-radius: 50%;
+}
+
+.social-feature-image a{
+  text-decoration: none;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.sf-insta{
+  background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #e1306c, #fd1d1d);
+}
+
+#feature-fb{
+  color: #3b5998;
+}
+
+#feature-inst{
+  color: whitesmoke;
+}
+
+#feature-twitter{
+  color: #1da1f2;
+}
+
+#feature-yt{
+  color: #c4302b;
+}
+
+/* mobile navigation */
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  background: white;
+  width: 80%;
+  height: 100vh;
+}
+
+.mobile-nav_items {
+  width: 90%;
+  height: 100%;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-nav_item {
+  margin: 1rem 0;
+}
+
+.mobile-nav_item a {
+  font-size: 1.5rem;
+}
+
+.open {
+    display: block !important;
+}
+
+/* Media queries */
+
+
+
+@media (min-width: 50rem) {
+  
+  main{
+    
+    grid-template-rows: 300px auto auto auto 400px auto;
+    grid-template-areas: "ad"
+                          "info"
+                          "info"
+                          "info"
+                          "news"
+                          "pets";
+  }
+
+  .toggle-button {
+      display: none;
+    }
+  
+    .main-nav {
+      /*display: inline-block;
+      text-align: right;
+      width: calc(100% - 44px);
+      vertical-align: middle;*/
+      display: flex;
+    }
+
+   .adv-showcase {
+    background: url('images/pug.png') no-repeat center;
+    background-size: cover;
+    }
+  
+  .d-info{
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .d-info div{
+    border-radius: 10px;
+  }
+
+.new-pet-title{
+  clip-path: polygon(96% 1%, 94% 100%, 6% 100%, 4% 0);
+}
+
+.f-pet-title{
+  clip-path: polygon(96% 1%, 94% 100%, 6% 100%, 4% 0);
+}
+
+  .new-pet-card{
+    flex-direction: row;
+    width: 50%;
+  }
+
+  .new-pet-card img{
+    border-bottom: 0;
+    border-right: 2px solid #2ddf5c;
+  }
+
+  .f-pet-cards{
+    flex-direction: row;
+  }
+
+  .social-feature-list{
+    justify-content: center;
+  }
+
+  .social-feature-image{
+    margin: 0 10px;
+  }
+}
