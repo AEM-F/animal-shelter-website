@@ -1,3 +1,4 @@
+/*Color pallet: white-graysh #EEEEEE , dark-blue #212832, light-blueish #4E8A8A, yellowish #FBD46D*/
 * {
   box-sizing: border-box;
 }
@@ -6,7 +7,7 @@ body {
   height: 100%;
   font-family: 'Kanit', sans-serif;
   margin: 0;
-  background-color:whitesmoke;
+  background-color:#EEEEEE;
 }
 
 main{
@@ -40,7 +41,7 @@ main{
   position: fixed;
   top: 0;
   left: 0;
-  background: #2ddf5c;
+  background: #4E8A8A;
   padding: 0.5rem 0.2rem;
   z-index: 1;
   display: flex;
@@ -66,14 +67,14 @@ main{
 .toggle-button_bar {
   width: 100%;
   height: 0.25rem;
-  background: black;
+  background: #FBD46D;
   display: block;
   margin: 0.5rem 0;
   border-radius: 2px;
 }
 
 .main-header_brand {
-  color: #0e4f1f;
+  color: #FBD46D;
   text-decoration: none;
   font-weight: bold;
   font-size: 1.5rem;
@@ -104,21 +105,21 @@ main{
 .main-nav_item a,
 .mobile-nav_item a {
   text-decoration: none;
-  color: #0e4f1f;
+  color: #212832;
   font-weight: bold;
   padding: 0.2rem 0;
 }
 
 .main-nav_item a:hover,
 .main-nav_item a:active {
-  color: white;
-  border-bottom: 3px solid white;
+  color: #eeeeee;
+  border-bottom: 3px solid #eeeeee;
 }
 
 .main-nav_item--cta a,
 .mobile-nav_item--cta a {
   color: white;
-  background: #ff1b68;
+  background: #FBD46D;
   padding: 0.5rem 1rem;
   border-radius: 8px;
   font-family: 'Bangers', cursive;
@@ -128,7 +129,7 @@ main{
 .main-nav_item--cta a:active,
 .mobile-nav_item--cta a:hover,
 .mobile-nav_item--cta a:active {
-  color: #ff1b68;
+  color:#FBD46D;
   background: white;
   border: none;
 }
@@ -144,7 +145,7 @@ main{
   background-size: cover;
   justify-content: center;
   align-items: flex-end;
-  border-bottom: 3px solid #ff1b68;
+  border-bottom: 3px solid#FBD46D;
   border-radius: 0px 0px 10px 10px;
 }
 
@@ -153,7 +154,7 @@ main{
   width: 140px;
   height: 50px;
   color: white;
-  background: #ff1b68;
+  background: #FBD46D;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -163,7 +164,7 @@ main{
 }
 
 .adv-donate-btn:hover{
-  color: #ff1b68;
+  color: #FBD46D;
   background: whitesmoke;
 }
 
@@ -186,30 +187,30 @@ main{
 }
 
 .d-medicine{
-  background-color: #ff1b68;
+  background-color:#212832;
   border-radius: 10px;
 }
 
 .d-medicine:hover{
-  box-shadow: 2px 2px 6px 0px #ff1b68;
+  box-shadow: 2px 2px 6px 0px #212832;
 }
 
 .d-food{
-  background-color: #2ddf5c;
+  background-color: #FBD46D;
   border-radius: 10px;
 }
 
 .d-food:hover{
-  box-shadow: 2px 2px 6px 0px #0e4f1f;
+  box-shadow: 2px 2px 6px 0px #FBD46D;
 }
 
 .d-toys{
-  background-color: teal;
+  background-color: #4E8A8A;
   border-radius: 10px;
 }
 
 .d-toys:hover{
-  box-shadow: 2px 2px 6px 0px teal;
+  box-shadow: 2px 2px 6px 0px #4E8A8A;
 }
 
 .adv-title{
@@ -234,7 +235,7 @@ main{
   color: whitesmoke;
   letter-spacing: 2px;
   clip-path: polygon(100% 0, 100% 50%, 93% 100%, 0% 100%, 0 51%, 0% 0%);
-  background-color:#2ddf5c;
+  background-color:#4E8A8A;
   width: 100%;
   padding: 10px;
 }
@@ -247,7 +248,7 @@ main{
   font-family: 'Bangers', cursive;
   color: whitesmoke;
   letter-spacing: 2px;
-  background-color: #ff1b68;
+  background-color: #212832;
 }
 
 .new-pet{
@@ -276,20 +277,20 @@ main{
 .pet-card a{
   text-decoration: none;
   color: white;
-  background: #ff1b68;
+  background: #212832;
   padding: 0.5rem 1rem;
   border-radius: 8px;
   font-family: 'Bangers', cursive;
 }
 
 .pet-card:hover{
-  box-shadow: 0 0 6px 1px #ff1b68;
+  box-shadow: 0 0 6px 1px #212832;
 }
 
 .pet-card a:hover{
-  color: #ff1b68;
-  background: whitesmoke;
-  border: 1px solid #ff1b68;
+  color: #212832;
+  background: #eeeeee;
+  border: 1px solid #212832;
 }
 
 .new-pet-card,
@@ -306,14 +307,14 @@ main{
   width: 100%;
   height: 250px;
   border-radius: 5px 5px 5px 5px;
-  border-bottom: 2px solid #ff1b68;
+  border-bottom: 2px solid #212832;
 }
 
 .new-pet-card img{
   width: 100%;
   height: 250px;
   border-radius: 5px 5px 5px 5px;
-  border-bottom: 2px solid #2ddf5c;
+  border-bottom: 2px solid #212832;
 }
 
 .new-pet-text,
@@ -326,14 +327,14 @@ main{
 font-size: 1.5rem;
 text-align: center;
 font-family: 'Bangers', cursive;
-color: #ff1b68;
+color: #212832;
 }
 
 .new-pet-card h3{
 font-size: 1.5rem;
 text-align: center;
 font-family: 'Bangers', cursive;
-color: #2ddf5c;
+color: #212832;
 }
 .f-pets{
   grid-area: pets;
@@ -342,7 +343,7 @@ color: #2ddf5c;
 /* footer section */
 .activity-tab{
 text-align: center;
-background-color: rgb(31, 31, 31);
+background-color: #212832;
 color: whitesmoke;
 border-radius: 20px 20px 0 0;
 }
@@ -356,10 +357,10 @@ border-radius: 20px 20px 0 0;
 #activity-find-out-btn{
   width: 100px;
   height: 40px;
-  background-color: #2ddf5c;
+  background-color: #FBD46D;
   border-radius: 3px;
   text-align: center;
-  border: 2px solid #2ddf5c;
+  border: 2px solid #FBD46D;
   font-size:1rem;
   font-weight: bold;
   font-family: 'Bangers', cursive;
@@ -370,12 +371,12 @@ border-radius: 20px 20px 0 0;
 
 #activity-find-out-btn:hover{
   background-color: whitesmoke;
-  color: #2ddf5c;
+  color: #FBD46D;
 }
 
 #social-features {
   margin-top: 10px;
-  background: #ff1b68;
+  background: #4E8A8A;
   padding: 1rem;
   border-radius: 60px 60px 0 0;
 }
@@ -517,7 +518,7 @@ border-radius: 20px 20px 0 0;
 
   .new-pet-card img{
     border-bottom: 0;
-    border-right: 2px solid #2ddf5c;
+    border-right: 5px solid #4E8A8A;
   }
 
   .f-pet-cards{
