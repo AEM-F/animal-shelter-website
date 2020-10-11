@@ -10,21 +10,6 @@ body {
   background-color:#EEEEEE;
 }
 
-main{
-  /* min-height: calc(100vh - 3.5rem - 8rem);
-  margin-top: 3.5rem; */
-  margin-top: 3rem;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 300px auto auto auto 600px 1500px;
-  grid-template-areas: "ad"
-                        "info"
-                        "info"
-                        "info"
-                        "news"
-                        "pets";
-}
-
 .backdrop {
   position: fixed;
   display: none;
@@ -112,14 +97,15 @@ main{
 
 .main-nav_item a:hover,
 .main-nav_item a:active {
-  color: #eeeeee;
-  border-bottom: 3px solid #eeeeee;
+  color: #FBD46D;
+  border-bottom: 3px solid #FBD46D;
 }
 
 .main-nav_item--cta a,
 .mobile-nav_item--cta a {
-  color: white;
-  background: #FBD46D;
+  color: #FBD46D;
+  font-size: 1.2rem;
+  background: #212832;
   padding: 0.5rem 1rem;
   border-radius: 8px;
   font-family: 'Bangers', cursive;
@@ -129,11 +115,26 @@ main{
 .main-nav_item--cta a:active,
 .mobile-nav_item--cta a:hover,
 .mobile-nav_item--cta a:active {
-  color:#FBD46D;
-  background: white;
+  color:#212832;
+  background: #FBD46D;
   border: none;
 }
 /* homepage content */
+
+.main-index-content{
+  /* min-height: calc(100vh - 3.5rem - 8rem);
+  margin-top: 3.5rem; */
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 300px auto auto auto 600px 1500px;
+  grid-template-areas: "ad"
+                        "info"
+                        "info"
+                        "info"
+                        "news"
+                        "pets";
+}
 
 /*Donations*/
 
@@ -153,7 +154,7 @@ main{
   margin-bottom: 10px;
   width: 140px;
   height: 50px;
-  color: white;
+  color: #212832;
   background: #FBD46D;
   border: none;
   border-radius: 8px;
@@ -165,7 +166,7 @@ main{
 
 .adv-donate-btn:hover{
   color: #FBD46D;
-  background: whitesmoke;
+  background: #212832;
 }
 
 .d-info{
@@ -197,6 +198,7 @@ main{
 
 .d-food{
   background-color: #FBD46D;
+  color: #212832;
   border-radius: 10px;
 }
 
@@ -340,6 +342,23 @@ color: #212832;
   grid-area: pets;
 }
 
+/* gallery content*/
+
+.main-gallery-content{
+  /* min-height: calc(100vh - 3.5rem - 8rem);
+  margin-top: 3.5rem; */
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 300px auto auto auto 600px 1500px;
+  grid-template-areas: "ad"
+                        "info"
+                        "info"
+                        "info"
+                        "news"
+                        "pets";
+}
+
 /* footer section */
 .activity-tab{
 text-align: center;
@@ -364,13 +383,13 @@ border-radius: 20px 20px 0 0;
   font-size:1rem;
   font-weight: bold;
   font-family: 'Bangers', cursive;
-  color: whitesmoke;
+  color: #212832;
   cursor: pointer;
   letter-spacing: 3px;
 }
 
 #activity-find-out-btn:hover{
-  background-color: whitesmoke;
+  background-color: #212832;
   color: #FBD46D;
 }
 
@@ -466,7 +485,18 @@ border-radius: 20px 20px 0 0;
 
 @media (min-width: 50rem) {
   
-  main{
+  .main-index-content{
+    
+    grid-template-rows: 300px auto auto auto 400px auto;
+    grid-template-areas: "ad"
+                          "info"
+                          "info"
+                          "info"
+                          "news"
+                          "pets";
+  }
+
+  .main-gallery-content{
     
     grid-template-rows: 300px auto auto auto 400px auto;
     grid-template-areas: "ad"
