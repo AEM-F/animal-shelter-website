@@ -228,6 +228,7 @@ body {
   font-size: 0.9rem;
 }
 
+
 /*New pet card & featured pet cards*/
 
 .new-pet-title{
@@ -543,12 +544,13 @@ border-radius: 20px 20px 0 0;
 
   .new-pet-card{
     flex-direction: row;
-    width: 50%;
+    width: 85%;
   }
 
   .new-pet-card img{
     border-bottom: 0;
     border-right: 5px solid #4E8A8A;
+    width: 300px;
   }
 
   .f-pet-cards{
