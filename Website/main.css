@@ -230,6 +230,9 @@ body {
 
 
 /*New pet card & featured pet cards*/
+.f-pets{
+  grid-area: pets;
+}
 
 .new-pet-title{
   font-size: 1.5rem;
@@ -307,10 +310,10 @@ body {
 }
 
 .pet-card img{
-  width: 100%;
   height: 250px;
   border-radius: 5px 5px 5px 5px;
   border-bottom: 2px solid #212832;
+  width: 100%;
 }
 
 .new-pet-card img{
@@ -339,25 +342,169 @@ text-align: center;
 font-family: 'Bangers', cursive;
 color: #212832;
 }
-.f-pets{
-  grid-area: pets;
-}
+
 
 /* gallery content*/
 
 .main-gallery-content{
-  /* min-height: calc(100vh - 3.5rem - 8rem);
-  margin-top: 3.5rem; */
   margin-top: 3rem;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 300px auto auto auto 600px 1500px;
-  grid-template-areas: "ad"
-                        "info"
-                        "info"
-                        "info"
-                        "news"
-                        "pets";
+  grid-template-rows: 150px minmax(1000px, max-content);
+  grid-template-areas: "filter"
+                        "pets-gallery";
+}
+
+.animal-quick-filter-container{
+  border: 3px solid #4E8A8A;
+  font-family: 'Bangers', cursive;
+  display: flex;
+  margin: 20px;
+  background-color: #4E8A8A;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px 0px #212832;
+}
+
+.quick-filter-text{
+  border-radius: 6px 0 0 6px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 100%;
+  font-size: 1rem;
+  color: #eeeeee;
+}
+
+.quick-filter-text h1{
+  margin: 5px;
+  letter-spacing: 2px;
+}
+
+.dog-filter-btn,
+.cat-filter-btn,
+.bird-filter-btn{
+  height: 100%;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.5rem;
+  font-family: 'Bangers', cursive;
+  color: #4E8A8A;
+  background-color: #212832;
+}
+
+.dog-filter-btn{
+  border-radius: 6px 0 0 6px;
+  border-right: 1px solid #4E8A8A;
+}
+.bird-filter-btn{
+  border-radius: 0 6px 6px 0;
+  border-left: 1px solid #4E8A8A;
+}
+
+.dog-filter-btn:hover,
+.cat-filter-btn:hover,
+.bird-filter-btn:hover{
+  background-color: #4E8A8A;
+  color: #212832;
+  border: 1px solid #212832;
+}
+
+.pet-gallery{
+  grid-area: pets-gallery;
+}
+
+.pet-gallery-cards{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.pet-gallery-cards a{
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pet-card-gallery{
+  /* flex: 0 0 200px; */
+  width: 300px;
+  margin: 10px;
+  border-radius: 10px;
+  transition: box-shadow 250ms;
+  border: 3px inset #4E8A8A;
+}
+
+.pet-card-gallery:hover{
+  box-shadow: 0 2px 10px 0 #4E8A8A;
+}
+
+.pet-card-gallery img{
+  width: 100%;
+  height: 200px;
+  border-radius: 5px 5px 5px 5px;
+  clip-path: ellipse(86% 59% at 52% 41%);
+}
+
+.pet-card-gallery .pet-name{
+  margin: 2px;
+font-size: 1.5rem;
+text-align: center;
+font-family: 'Bangers', cursive;
+color:  #212832;
+text-shadow: 0 0 3px #4E8A8A;
+}
+
+.pcg-text{
+  text-align: center;
+  border-radius: 3px;
+}
+
+.pcg-text p{
+  font-size: 0.9rem;
+  margin: 0;
+  color: #212832;
+}
+
+.nav-gallery-btns{
+  display: flex;
+  align-items: center;
+}
+
+.first-page-btn,
+.previous-page-btn,
+.last-page-btn,
+.next-page-btn{
+  width: 80px;
+  height: 60px;
+  margin: 3px;
+  color: #212832;
+  background:#4E8A8A ;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.8rem;
+  text-align: center;
+  text-shadow: 0 0 3px #212832;
+}
+
+.first-page-btn:hover,
+.previous-page-btn:hover,
+.last-page-btn:hover,
+.next-page-btn:hover{
+  color:#212832;
+  background: #FBD46D;
+  border: none;
+}
+
+.push {
+  margin-left: auto;
 }
 
 /* footer section */
@@ -498,14 +645,24 @@ border-radius: 20px 20px 0 0;
   }
 
   .main-gallery-content{
-    
-    grid-template-rows: 300px auto auto auto 400px auto;
-    grid-template-areas: "ad"
-                          "info"
-                          "info"
-                          "info"
-                          "news"
-                          "pets";
+    grid-template-rows: 100px minmax(1000px, max-content);
+    grid-template-areas: "filter"
+                          "pets-gallery";
+  }
+
+  .quick-filter-text{
+    display: flex;
+  }
+
+  .dog-filter-btn,
+  .cat-filter-btn,
+  .bird-filter-btn{
+    width: 20%;
+  }
+
+  .pet-gallery-cards{
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
   .toggle-button {
@@ -513,17 +670,17 @@ border-radius: 20px 20px 0 0;
     }
   
     .main-nav {
-      /*display: inline-block;
-      text-align: right;
-      width: calc(100% - 44px);
-      vertical-align: middle;*/
-      display: flex;
-    }
+    /*display: inline-block;
+    text-align: right;
+    width: calc(100% - 44px);
+    vertical-align: middle;*/
+    display: flex;
+  }
 
    .adv-showcase {
     background: url('images/pug.png') no-repeat center;
     background-size: cover;
-    }
+  }
   
   .d-info{
     flex-direction: row;
@@ -534,13 +691,13 @@ border-radius: 20px 20px 0 0;
     border-radius: 10px;
   }
 
-.new-pet-title{
-  clip-path: polygon(96% 1%, 94% 100%, 6% 100%, 4% 0);
-}
+  .new-pet-title{
+    clip-path: polygon(96% 1%, 94% 100%, 6% 100%, 4% 0);
+  }
 
-.f-pet-title{
-  clip-path: polygon(96% 1%, 94% 100%, 6% 100%, 4% 0);
-}
+  .f-pet-title{
+    clip-path: polygon(96% 1%, 94% 100%, 6% 100%, 4% 0);
+  }
 
   .new-pet-card{
     flex-direction: row;
@@ -555,6 +712,7 @@ border-radius: 20px 20px 0 0;
 
   .f-pet-cards{
     flex-direction: row;
+    flex-wrap: wrap;
   }
 
   .social-feature-list{

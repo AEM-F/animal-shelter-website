@@ -51,6 +51,8 @@ $animalView = new AnimalView();
           $animalView->showAnimal($animal1);
           $animalView->showAnimal($animal2);
           $animalView->showAnimal($animal3);
+          //$animalsByLimit = Animal::getAnimalsByLimit(0, 5);
+          //print_r($animalsByLimit);
           ?>
     </div>
 </div>

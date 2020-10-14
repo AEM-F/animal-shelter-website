@@ -1,7 +1,6 @@
 <?php
 include 'includes/class-autoloader.inc.php';
 Animal::setDatabase(new Dbh());
-$animal = Animal::setDatabase(new Dbh());
 $animalView = new AnimalView();
 ?>
 

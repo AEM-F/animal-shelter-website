@@ -20,7 +20,18 @@ class AnimalView{
         <p>" . $animal->description . "</p>
         </div>
     </article>";
+    }
 
+    public function showAnimalForGallery($animal){
+      echo "<article class=\"pet-card-gallery\">
+      <a href=\"\">
+  <img src=\"" . $animal->imgLink . "\" alt=\"Animal Photo\">
+  <div class=\"pcg-text\">
+     <div class=\"pet-name\">" . $animal->name . "</div>
+      <p>Sex: " . $animal->sex . " | Breed: ". $animal->breed . " | Size: " . $animal->size . " | Age: " . $animal->age . "</p>
+  </div>
+</a>
+ </article>";
     }
 }
 ?>

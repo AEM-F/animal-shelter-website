@@ -18,9 +18,6 @@
                 <li class="main-nav_item">
                     <a href="#">About us</a>
                 </li>
-                <li class="main-nav_item">
-                    <a href="#">Blog</a>
-                </li>
                 <li class="main-nav_item main-nav_item--cta">
                     <a href="#l"><i class="fas fa-donate"></i>Donate</a>
                 </li>
@@ -37,9 +34,6 @@
             </li>
             <li class="mobile-nav_item">
                 <a href="#">About us</a>
-            </li>
-            <li class="mobile-nav_item">
-                <a href="#">Blog</a>
             </li>
             <li class="mobile-nav_item mobile-nav_item--cta">
                 <a href="#">Donate</a>
