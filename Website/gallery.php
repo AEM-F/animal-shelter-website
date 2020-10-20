@@ -1,14 +1,13 @@
 <?php
 include 'includes/class-autoloader.inc.php';
-Animal::setDatabase(new Dbh());
-$animalView = new AnimalView();
-$totalAnimals = Animal::getAllAnimalsCount();
+$animalManager = new AnimalManager();
+$totalAnimals = $animalManager->getTotalAnimals();
 // page is the current page, if there's nothing set, default is page 1
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $animalsPerPage = 10;
 $startNr = ($animalsPerPage * $page) - $animalsPerPage;
 $total_pages = ceil($totalAnimals / $animalsPerPage);
-$animalsByLimit = Animal::getAnimalsByLimit($startNr, $animalsPerPage);
+$animalsByLimit = $animalManager->getAllAnimalsByLimit($startNr, $animalsPerPage);
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +68,7 @@ $animalsByLimit = Animal::getAnimalsByLimit($startNr, $animalsPerPage);
             <div class="pet-gallery-cards">
               <?php
               foreach($animalsByLimit as $animal){
-                  $animalView->showAnimalForGallery($animal);
+                  $animalManager->showAnimalForGallery($animal);
               }
               ?>
             </div>

@@ -1,7 +1,6 @@
 <?php
 include 'includes/class-autoloader.inc.php';
-Animal::setDatabase(new Dbh());
-$animalView = new AnimalView();
+$animalManager = new AnimalManager();
 ?>
 
 <!DOCTYPE html>
@@ -45,8 +44,8 @@ $animalView = new AnimalView();
 <div class="new-pet">
     <h1 class="new-pet-title">A new member from our family managed to get a new home</h1>
       <?php 
-      $lastAddedAnimal = Animal::getAnimalById(Animal::getAllAnimalsCount());
-      $animalView->showLastAddedAnimal($lastAddedAnimal);
+      $lastAddedAnimal = $animalManager->getAnimalById($animalManager->getTotalAnimals());
+      $animalManager->showLastAddedAnimal($lastAddedAnimal);
       ?>
       
 </div>
@@ -54,12 +53,12 @@ $animalView = new AnimalView();
     <h1 class="f-pet-title">Check out some of our members!</h1>
     <div class="f-pet-cards">
           <?php
-          $animal1 = Animal::getAnimalById(1);
-          $animal2 = Animal::getAnimalById(2);
-          $animal3 = Animal::getAnimalById(3);
-          $animalView->showAnimal($animal1);
-          $animalView->showAnimal($animal2);
-          $animalView->showAnimal($animal3);
+          $animal1 = $animalManager->getAnimalById(1);
+          $animal2 = $animalManager->getAnimalById(2);
+          $animal3 = $animalManager->getAnimalById(3);
+          $animalManager->showAnimal($animal1);
+          $animalManager->showAnimal($animal2);
+          $animalManager->showAnimal($animal3);
           ?>
     </div>
 </div>
