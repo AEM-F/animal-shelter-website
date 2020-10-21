@@ -31,6 +31,7 @@ body {
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
 }
+
 /* navigation */
 .main-header {
   grid-area: navigation;
@@ -574,6 +575,7 @@ text-shadow: 0 0 3px #4E8A8A;
   /*Center*/
   margin: 20px 0;
   border: 3px solid #4E8A8A;
+  border-radius: 20px;
 }
 
 /* Center the avatar image inside this container */
@@ -652,18 +654,25 @@ label.Check-box-Remember-Me{
   }
   
   
-  .signUpButtSes{
-    background-color: #4E8A8A;
-      display: flex;
-      color: white;
-      padding: 14px 20px;
-      margin: 20px 69px;
-      border: none;
-      cursor: pointer;
-      width: 50%;
-      background-position: center;
-      border-radius: 30px;
-      
+.signUpButtSes{
+  background-color: #4E8A8A;
+  display: flex;
+  color: white;
+  padding: 14px 20px;
+  margin: 20px 69px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  background-position: center;
+  border-radius: 30px; 
+  }
+
+  #loginError-text{
+    margin:0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #fd1d1dcc;
   }
 
 /*account-view & account edit*/

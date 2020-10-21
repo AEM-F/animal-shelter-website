@@ -55,7 +55,7 @@ if(isset($_SESSION["userName"])){
                 </form>
                 <?php
                 if($errorVal){
-                echo "Invalid credentials";
+                echo "<p id=\"loginError-text\">Invalid credentials!</p>";
                 }
                 ?>
             </div>
