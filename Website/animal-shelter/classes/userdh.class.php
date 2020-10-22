@@ -52,7 +52,7 @@ class UserDh{
     }
 
     public function updateUser($user){
-        $sql="UPDATE `website_shelter_users` SET `Id`=:id, `Name`=:uname, `LastName`=:lastName, `Email`=:email, `Password`=:upassword WHERE `Id`=:id";
+        $sql="UPDATE `website_shelter_users` SET `Name`=:uname, `LastName`=:lastName, `Email`=:email, `Password`=:upassword WHERE `Id`=:id";
         $results=$this->database->connect()->prepare($sql);
         $results->bindValue(':id', $user->GetId());
         $results->bindValue(':uname', $user->GetName());

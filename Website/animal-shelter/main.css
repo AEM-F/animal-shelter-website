@@ -31,6 +31,7 @@ body {
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
 }
+
 /* navigation */
 .main-header {
   grid-area: navigation;
@@ -96,7 +97,7 @@ body {
 }
 
 .main-nav_item {
-  margin: 0 1rem;
+  margin: 0 0.5rem;
 }
 
 .main-nav_item a,
@@ -118,8 +119,9 @@ body {
 .mobile-nav_item--cta a {
   color: #FBD46D;
   font-size: 1.2rem;
+  letter-spacing: 1px;
   background: #212832;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.5rem;
   border-radius: 8px;
   font-family: 'Bangers', cursive;
 }
@@ -134,22 +136,32 @@ body {
 }
 
 .main-nav_item--user{
-  border: 1.5px solid #FBD46D;
+  display: none;
+  background-color: #FBD46D;
+  border: 1.5px solid #212832;
   border-radius: 5px;
-  transition: box-shadow 250ms;
   cursor: default;
   font-size: 1rem;
+  animation: borderColorChange 5s infinite;
+}
+
+@keyframes borderColorChange{
+  50%
+  {
+    box-shadow: 0 2px 10px 0 #212832;
+  }
 }
 
 .main-nav_item--user p{
+  display: none;
+  font-family: 'Bangers', cursive;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
   padding: 0 3px;
   margin: 0;
   color: #212832;
 }
 
-.main-nav_item--user:hover{
-  box-shadow: 0 2px 10px 0 #FBD46D;
-}
 /* homepage content */
 
 .main-index-content{
@@ -187,13 +199,15 @@ body {
   height: 50px;
   color: #212832;
   background: #FBD46D;
-  border: none;
+  border: 4px solid #FBD46D;
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
   font-size: 1.5rem;
   font-family: 'Bangers', cursive;
+  transition: 0.3s;
 }
+
 
 .adv-donate-btn:hover{
   color: #FBD46D;
@@ -574,6 +588,7 @@ text-shadow: 0 0 3px #4E8A8A;
   /*Center*/
   margin: 20px 0;
   border: 3px solid #4E8A8A;
+  border-radius: 20px;
 }
 
 /* Center the avatar image inside this container */
@@ -652,22 +667,148 @@ label.Check-box-Remember-Me{
   }
   
   
-  .signUpButtSes{
-    background-color: #4E8A8A;
-      display: flex;
-      color: white;
-      padding: 14px 20px;
-      margin: 20px 69px;
-      border: none;
-      cursor: pointer;
-      width: 50%;
-      background-position: center;
-      border-radius: 30px;
-      
+.signUpButtSes{
+  background-color: #4E8A8A;
+  display: flex;
+  color: white;
+  padding: 14px 20px;
+  margin: 20px 69px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  background-position: center;
+  border-radius: 30px; 
+  }
+
+  #loginError-text{
+    margin:0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #fd1d1dcc;
   }
 
 /*account-view & account edit*/
 
+.account-view-content,
+.account-edit-content{
+  grid-area: content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user-card-wrapper,
+.user-edit-card-wrapper{
+  margin: 10px;
+  border-radius: 20px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 2px 10px 0 #c2c2c2;
+}
+
+.user-card-wrapper{
+  height: 450px;
+}
+
+.user-edit-card-wrapper{
+  height: 600px;
+}
+
+.user-card-header{
+  width: 100%;
+  height: 30%;
+  background:#212832;
+  background-size: cover;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.user-card-header i{
+  padding-left: 1rem;
+  color:#FBD46D;
+  font-size: 6rem;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.user-card-body{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  height: 70%;
+  font-size:1.2rem;
+}
+
+.user-edit-info-form{
+  height: 100%;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: space-around;
+}
+
+.user-edit-text-input-wrap{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-edit-text-input{
+border: 1px solid #ccc;
+padding: 0.2rem 0.5rem;
+font: inherit;
+border-radius: 0.3rem;
+}
+
+.user-edit-text-input:invalid{
+  border-color: rgb(189, 3, 3);
+  border-width: 2px;
+}
+
+.user-edit-form-btn-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-edit-btn,
+.user-edit-submit-btn{
+  margin: 10px;
+  border: none;
+  cursor: pointer;
+  width: 120px;
+  text-decoration: none;
+  color: #FBD46D;
+  font-size: 1.2rem;
+  background-color: #212832;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-family: "Bangers", cursive;
+  transition: 0.3s;
+}
+
+.user-edit-btn:hover,
+.user-edit-submit-btn:hover{
+  color: #212832;
+  background: #FBD46D;
+  border: none;
+}
+
+.user-edit-error{
+  text-align: center;
+  font-size: 1.3rem;
+}
 
 /* footer section */
 .main-footer{
@@ -682,7 +823,7 @@ border-radius: 20px 20px 0 0;
 }
 
 .activity-tab p{
-  margin:0;
+  margin:0 0 10px 0;
   padding-top: 20px;
   font-size: 1.5rem;
   font-family: 'Bangers', cursive;
@@ -797,7 +938,22 @@ border-radius: 20px 20px 0 0;
 
 /* Media queries */
 
+@media (min-width: 75rem){
 
+  /*navbar section*/
+  .main-nav_item--cta a{
+    padding: 0.5rem 1rem;
+  }
+
+  .main-nav_item--user{
+    display: block;
+  }
+
+  .main-nav_item--user p{
+    font-size: 1.2rem;
+    display: block;
+  }
+}
 
 @media (min-width: 50rem) {
   /*Index content*/
@@ -890,5 +1046,43 @@ border-radius: 20px 20px 0 0;
     margin: 0 10px;
   }
 
-  
+  /* user content*/
+
+  .user-card-wrapper{
+    flex-direction: row;
+    width: 70%;
+    height: 250px;
+}
+
+.user-edit-card-wrapper{
+  flex-direction: row;
+  width: 70%;
+  height:350px;
+}
+
+.user-card-header{
+    align-items: center;
+    border-radius: 20px 0 0 20px;
+    height: 100%;
+    width: 25%;
+}
+
+.user-card-body{
+  height: 100%;
+  width: 75%;
+}
+
+.user-edit-info-form{
+  height: 100%;
+  align-items: flex-start;
+}
+
+.user-edit-text-input-wrap{
+  flex-direction: row;
+}
+
+.user-card-header i{
+  font-size: 5rem;
+}
+
 }

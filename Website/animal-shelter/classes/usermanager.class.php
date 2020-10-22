@@ -19,12 +19,7 @@ class UserManager{
     }
 
     public function updateUser($user){
-        if($user->Name() != "" || $user->LastName() != "" || $user->GetEmail() != "" || $user->GetPassword() != ""){
             $this->userDh->updateUser($user);
-        }
-        else{
-            return false;
-        }
     }
 
     public function addUser($name, $lastName, $email, $password){
@@ -53,7 +48,7 @@ class UserManager{
         }
     }
 
-    public function showUserById($user){
+    public function showUser($user){
         echo 
         "
             <b>Id:</b> " . $user->GetId() . "<br>
@@ -63,7 +58,7 @@ class UserManager{
             
     }
 
-    private function sanitizeString($string){
+    public function sanitizeString($string){
 
         $string = strip_tags($string);
 
@@ -72,7 +67,7 @@ class UserManager{
     return $string;
     }
 
-    private function sanitizePassword($string)
+    public function sanitizePassword($string)
     {
         $string = md5($string);
     

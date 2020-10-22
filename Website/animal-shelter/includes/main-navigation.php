@@ -16,16 +16,20 @@
                     echo "<li class=\"main-nav_item main-nav_item--user\">
                     <p>" . "Hello, " . $userManager->getUserByName($_SESSION["userName"])->GetName() . "</p>
                     </li>";
+
+                    echo "<li class=\"main-nav_item main-nav_item--cta\">
+                    <a href=\"account-overview.php\"><i class=\"fas fa-user-circle\"></i>Account</a>
+                    </li>";
                 }
                 ?>
-                <li class="main-nav_item">
-                    <a href="gallery.php">Gallery</a>
-                </li>
-                <li class="main-nav_item">
-                    <a href="#">About us</a>
+                <li class="main-nav_item main-nav_item--cta">
+                    <a href="gallery.php"><i class="fas fa-camera-retro"></i> Gallery</a>
                 </li>
                 <li class="main-nav_item main-nav_item--cta">
-                    <a href="#l"><i class="fas fa-donate"></i>Donate</a>
+                    <a href="#"><i class="fas fa-info-circle"></i> About us</a>
+                </li>
+                <li class="main-nav_item main-nav_item--cta">
+                    <a href="#l"><i class="fas fa-donate"></i> Donate</a>
                 </li>
                 <?php
                 if(isset($_SESSION["userName"])){
@@ -45,14 +49,21 @@
     </header>
     <nav class="mobile-nav">
         <ul class="mobile-nav_items">
-            <li class="mobile-nav_item">
-                <a href="gallery.php">Gallery</a>
-            </li>
-            <li class="mobile-nav_item">
-                <a href="#">About us</a>
+            <?php 
+            if(isset($_SESSION["userName"])){
+                echo "<li class=\"mobile-nav_item mobile-nav_item--cta\">
+                <a href=\"account-overview.php\"><i class=\"fas fa-user-circle\"></i>Account</a>
+            </li>";
+            }
+            ?>
+            <li class="mobile-nav_item mobile-nav_item--cta">
+            <a href="gallery.php"><i class="fas fa-camera-retro"></i> Gallery</a>
             </li>
             <li class="mobile-nav_item mobile-nav_item--cta">
-                <a href="#">Donate</a>
+                <a href="#"><i class="fas fa-info-circle"></i> About us</a>
+            </li>
+            <li class="mobile-nav_item mobile-nav_item--cta">
+                <a href="#l"><i class="fas fa-donate"></i> Donate</a>
             </li>
             <?php
                 if(isset($_SESSION["userName"])){

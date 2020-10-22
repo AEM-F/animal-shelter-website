@@ -2,6 +2,8 @@
 include '../includes/class-autoloader.inc.php';
 $userManager = new UserManager();
 session_start();
+
+
 if(isset($_POST["loginButton"])){
     
     $isValid = $userManager->ValidateLogIn($_POST["Email"],$_POST["Password"]);
@@ -17,6 +19,9 @@ if(isset($_POST["loginButton"])){
         header("Location: ../login.php");
     }
 }
+else{
+    header("Location: ../login.php");
+}
 
     if(isset($_POST['signUpButton'])){
     if($userManager->addUser($_POST['FirstName'], $_POST['LastName'], $_POST['Email'], $_POST['Password'])){
@@ -28,6 +33,10 @@ if(isset($_POST["loginButton"])){
         header("Location: ../signup.php");
     }
     
-}
+    } 
+    else{
+        header("Location: ../login.php");
+    }  
 
 ?>
+
