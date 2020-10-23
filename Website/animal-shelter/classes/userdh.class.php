@@ -51,6 +51,21 @@ class UserDh{
 
     }
 
+    public function validateEmail($email){
+        $query = "SELECT * FROM website_shelter_users WHERE `Email`=:email";
+        $results = $this->database->connect()->prepare($query);
+        $results->bindValue(":email",$email);
+
+        $results->execute();
+
+        if($results->rowCount() == 1){
+            return true;
+        }
+        else{
+            return false;
+         }
+    }
+
     public function updateUser($user){
         $sql="UPDATE `website_shelter_users` SET `Name`=:uname, `LastName`=:lastName, `Email`=:email, `Password`=:upassword WHERE `Id`=:id";
         $results=$this->database->connect()->prepare($sql);

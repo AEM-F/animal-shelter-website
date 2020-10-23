@@ -49,11 +49,11 @@ $loggedUser= $userManager->getUserByName($user_name);
                     </div>
                     <div id="user-password" class="user-edit-text-input-wrap">
                         <b>Password:</b>
-                        <input class="user-edit-text-input" type="text" name="input-edit-password" placeholder="" value="" required />
+                        <input class="user-edit-text-input" type="password" name="input-edit-password" placeholder="" value="" required />
                     </div>
                     <div id="user-cPassword" class="user-edit-text-input-wrap">
                         <b>Confirm Password:</b>
-                        <input class="user-edit-text-input" type="text" name="input-edit-confirm-password" placeholder="" value="" required />
+                        <input class="user-edit-text-input" type="password" name="input-edit-confirm-password" placeholder="" value="" required />
                     </div>
                     <div id="user-lastName" class="user-edit-text-input-wrap">
                         <b>Last Name:</b>

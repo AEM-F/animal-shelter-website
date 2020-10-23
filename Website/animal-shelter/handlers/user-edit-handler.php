@@ -19,7 +19,7 @@ if(isset($_POST["user-update-btn"]) && $_POST["user-update-btn"] == "Submit"){
     $inputcPassword= $userManager->sanitizePassword($_POST["input-edit-confirm-password"]);
     if(empty($inputName) || empty($inputLastName) || empty($inputEmail) || empty($inputPassword) || empty($inputcPassword)){
         $_SESSION["userEditError"] = true;
-        //header("Location: ../account-edit.php");
+        header("Location: ../account-edit.php");
     } 
     else{
         if(strlen($inputName) < 50 || strlen($inputLastName) < 50 || strlen($inputEmail) < 50 || strlen($_POST["input-edit-password"]) < 50){

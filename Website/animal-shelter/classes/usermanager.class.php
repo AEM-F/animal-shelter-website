@@ -19,33 +19,21 @@ class UserManager{
     }
 
     public function updateUser($user){
-            $this->userDh->updateUser($user);
+         $this->userDh->updateUser($user);
     }
 
     public function addUser($name, $lastName, $email, $password){
-        $inputName = $this->sanitizeString($name);
-        $inputLastName = $this->sanitizeString($lastName);
-        $inputEmail = $this->sanitizeString($email);
-        $inputPassword = $this->sanitizePassword($password);
-        if($inputName == "" || $inputLastName == "" || $inputEmail == "" || $inputPassword == ""){
-            return false;
-        }
-        else{
-            $user = new User($inputName, $inputLastName, $inputEmail, $inputPassword);
-            $this->userDh->insertUser($user);
-            return true;
-        }
+        $user = new User($name, $lastName, $email, $password);
+         $this->userDh->insertUser($user);
+        return true;
     }
 
     public function validateLogIn($email,$password){
-        $inputEmail = $this->sanitizeString($email);
-        $inputPassword = $this->sanitizePassword($password);
-        if($inputEmail == "" || $inputPassword == ""){
-        return false;
-        }
-        else{
-        return  $this->userDh->validateLogIn($inputEmail,$inputPassword);
-        }
+        return  $this->userDh->validateLogIn($email,$password);
+    }
+
+    public function validateEmail($email){
+        return $this->userDh->validateEmail($email);
     }
 
     public function showUser($user){

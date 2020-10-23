@@ -3,40 +3,75 @@ include '../includes/class-autoloader.inc.php';
 $userManager = new UserManager();
 session_start();
 
-
+//login
 if(isset($_POST["loginButton"])){
-    
-    $isValid = $userManager->ValidateLogIn($_POST["Email"],$_POST["Password"]);
-
-    if($isValid){
-        $user = $userManager->getUserByEmail($_POST["Email"]);
-        $_SESSION["userName"] = $user->GetName();
-        $_SESSION["logInError"] = false;
-        header("Location: ../index.php");
-    }
-    else{
+    $inputEmail = $userManager->sanitizeString($_POST["Email"]);
+    $inputPassword= $userManager->sanitizePassword($_POST["Password"]);
+    if(empty($inputEmail) || empty($inputPassword)){
         $_SESSION["logInError"] = true;
         header("Location: ../login.php");
     }
-}
-else{
-    header("Location: ../login.php");
+    else{
+        if(strlen($inputEmail) < 50 || strlen($_POST["Password"]) < 50){
+
+            $isValid = $userManager->ValidateLogIn($inputEmail,$inputPassword);
+            if($isValid){
+                $user = $userManager->getUserByEmail($inputEmail);
+                $_SESSION["userName"] = $user->GetName();
+                $_SESSION["logInError"] = false;
+                header("Location: ../index.php");
+            }
+            else{
+                $_SESSION["logInError"] = true;
+                header("Location: ../login.php");
+            }
+        }
+        else{
+            $_SESSION["logInError"] = true;
+            header("Location: ../login.php");
+        }
+    }
 }
 
-    if(isset($_POST['signUpButton'])){
-    if($userManager->addUser($_POST['FirstName'], $_POST['LastName'], $_POST['Email'], $_POST['Password'])){
-         $user = $userManager->getUserByEmail($_POST["Email"]);
-        $_SESSION["userName"] = $user->GetName();
-        header("Location: ../index.php");
-    }
-    else{
+//singup
+elseif(isset($_POST['signUpButton'])){
+    $inputName = $userManager->sanitizeString($_POST["FirstName"]);
+    $inputLastName = $userManager->sanitizeString($_POST["LastName"]);
+    $inputEmail = $userManager->sanitizeString($_POST["Email"]);
+    $inputPassword= $userManager->sanitizePassword($_POST["Password"]);
+    $inputcPassword= $userManager->sanitizePassword($_POST["PasswordRpt"]);
+    if(empty($inputName) || empty($inputLastName) || empty($inputEmail) || empty($inputPassword) || empty($inputcPassword)){
+        $_SESSION["signupError"] = true;
         header("Location: ../signup.php");
     }
-    
-    } 
     else{
-        header("Location: ../login.php");
-    }  
-
+        if(strlen($inputName) < 50 || strlen($inputLastName) < 50 || strlen($inputEmail) < 50 || strlen($_POST["input-edit-password"]) < 50){
+            if($inputPassword == $inputcPassword){
+                if(!$userManager->validateEmail($inputEmail)){
+                    $userManager->addUser($inputName, $inputLastName, $inputEmail, $inputPassword);
+                    $_SESSION["userName"] = $inputName;
+                    $_SESSION["signupError"] = false;
+                    header("Location: ../index.php");
+                }
+                else{
+                $_SESSION["signupError"] = true;
+                header("Location: ../signup.php");
+                }
+            }
+            else{
+                $_SESSION["signupError"] = true;
+                header("Location: ../signup.php");
+            }
+        }
+        else{
+            $_SESSION["signupError"] = true;
+            header("Location: ../signup.php");
+        }
+    }
+} 
+else{
+    header("Location: ../index.php");
+}
+ 
 ?>
 

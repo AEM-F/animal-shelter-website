@@ -680,7 +680,8 @@ label.Check-box-Remember-Me{
   border-radius: 30px; 
   }
 
-  #loginError-text{
+  #loginError-text,
+  #signupError-text{
     margin:0;
     font-size: 1.2rem;
     font-weight: bold;

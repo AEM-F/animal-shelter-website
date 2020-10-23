@@ -1,8 +1,13 @@
 <?php 
 include 'includes/class-autoloader.inc.php';
+session_start();
 if(isset($_SESSION["userName"])){
     header("Location: index.php");
-  }
+}
+$errorVal = false;
+if(isset($_SESSION["signupError"])){
+$errorVal = $_SESSION["signupError"];
+}
 ?>
 
 <!DOCTYPE html>
@@ -47,6 +52,11 @@ if(isset($_SESSION["userName"])){
                         <h5>Already a member click <a href="login.php" class="singUpText">Here</a></h5>
                     </label>
                 </form>
+                <?php
+                if($errorVal){
+                echo "<p id=\"signupError-text\">Invalid input!</p>";
+                }
+                ?>
             </div>
         </section>
         <?php include 'includes/main-footer.php'; ?>
