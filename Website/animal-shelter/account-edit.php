@@ -42,27 +42,27 @@ $loggedUser= $userManager->getUserById($user_id);
             </div>
             <div class="user-card-body">
                 <form action="handlers/user-edit-handler.php" method="post" class="user-edit-info-form" onsubmit="return ValidateUserEditInfo()">
-                <div id="error_user_edit_name" class="user-error"><i class="fas fa-exclamation-triangle"></i></div>
+                <div id="error_user_edit_name" class="user-error"></div>
                     <div id="user-name" class="user-edit-text-input-wrap">
                         <b>Name:</b>
                         <input id="user_edit_name" class="user-edit-text-input" type="text" name="input-edit-name" placeholder="" value="<?php echo $loggedUser->GetName();?>" />
                     </div>
-                    <div id="error_user_edit_password" class="userEPError user-error"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div id="error_user_edit_password" class="userEPError user-error"></div>
                     <div id="user-password" class="user-edit-text-input-wrap">
                         <b>Password:</b>
                         <input id="user_edit_password" class="user-edit-text-input" type="password" name="input-edit-password" placeholder="" value=""/>
                     </div>
-                    <div id="error_user_edit_cpassword" class="user-error"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div id="error_user_edit_cpassword" class="user-error"></div>
                     <div id="user-cPassword" class="user-edit-text-input-wrap">
                         <b>Confirm Password:</b>
                         <input id="user_edit_cpassword" class="user-edit-text-input" type="password" name="input-edit-confirm-password" placeholder="" value=""/>
                     </div>
-                    <div id="error_user_edit_lastName" class="user-error"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div id="error_user_edit_lastName" class="user-error"></div>
                     <div id="user-lastName" class="user-edit-text-input-wrap">
                         <b>Last Name:</b>
                         <input id="user_edit_lastName" class="user-edit-text-input" type="text" name="input-edit-last-name" placeholder="" value="<?php echo $loggedUser->GetLastName();?>"/>
                     </div>
-                    <div id="error_user_edit_email" class="user-error"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div id="error_user_edit_email" class="user-error"></div>
                     <div id="user-email" class="user-edit-text-input-wrap">
                         <b>Email:</b>
                         <input id="user_edit_email" class="user-edit-text-input" type="text" name="input-edit-email" placeholder="" value="<?php echo $loggedUser->GetEmail();?>"/>

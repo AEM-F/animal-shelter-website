@@ -8,28 +8,28 @@ function ValidateLoginInfo(){
 //validate email
     if(!user_email.value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)){
         error_user_email.style.display= "block";
-        error_user_email.innerHTML="Enter a valid email adress";
+        error_user_email.innerHTML="<i class=\"fas fa-exclamation-triangle\"></i> Enter a valid email adress";
         return false;
     }
     else if(user_email.value.length < 1 || user_email.value ==""){
         error_user_email.style.display= "block";
-        error_user_email.innerHTML="Email can not be empty";
+        error_user_email.innerHTML="<i class=\"fas fa-exclamation-triangle\"></i> Email can not be empty";
         return false;
     }
     else if(user_email.value.length > 50){
         error_user_email.style.display= "block";
-        error_user_email.innerHTML="Email text limit reached(50)";
+        error_user_email.innerHTML="<i class=\"fas fa-exclamation-triangle\"></i> Email text limit reached(50)";
         return false;
     }
     //validate password
     else if(user_password.value.length < 1 || user_password.value ==""){
         error_user_password.style.display= "block";
-        error_user_password.innerHTML="Password can not be empty";
+        error_user_password.innerHTML="<i class=\"fas fa-exclamation-triangle\"></i> Password can not be empty";
         return false;
     }
     else if(user_password.value.length > 50){
         error_user_password.style.display= "block";
-        error_user_password.innerHTML="Password text limit reached(50)";
+        error_user_password.innerHTML="<i class=\"fas fa-exclamation-triangle\"></i> Password text limit reached(50)";
         return false;
     }
     else {

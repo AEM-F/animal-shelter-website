@@ -35,19 +35,19 @@ $errorVal = $_SESSION["signupError"];
                 }
                 ?>
                 <form method="POST" action="handlers/user-login-signup-handler.php" onsubmit="return ValidateUserSignUpInfo()">
-                    <div id="error_user_signup_name" class="user-error"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div id="error_user_signup_name" class="user-error"></div>
                     <label for="Name"><b>Name</b></label>
                     <input id="user_signup_name" type="text" placeholder="Enter name" class="UserStyle Input-field" name="FirstName" />
-                    <div id="error_user_signup_lastName" class="user-error"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div id="error_user_signup_lastName" class="user-error"></div>
                     <label for="LastName"><b>Last name</b></label>
                     <input id="user_signup_lastName" type="text" placeholder="Enter LastName" class="UserStyle Input-field" name="LastName" />
-                    <div id="error_user_signup_email" class="user-error"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div id="error_user_signup_email" class="user-error"></div>
                     <label for="Email"><b>Email</b></label>
                     <input id="user_signup_email" type="text" placeholder="Enter email address" class="Input-field" name="Email" />
-                    <div id="error_user_signup_password" class="userEPError user-error"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div id="error_user_signup_password" class="userEPError user-error"></div>
                     <label for="Password"><b>Password</b></label>
                     <input id="user_signup_password" type="password" placeholder="Enter Password" name="Password" class="Input-field" />
-                    <div id="error_user_signup_cpassword" class="user-error"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div id="error_user_signup_cpassword" class="user-error"></div>
                     <label for="PasswordRpt"><b>Password confirm</b></label>
                     <input id="user_signup_cpassword" type="password" placeholder="Enter Password again" name="PasswordRpt" class="Input-field" />
 

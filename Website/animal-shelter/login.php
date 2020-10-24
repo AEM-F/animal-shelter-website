@@ -45,10 +45,10 @@ if(isset($_SESSION["userId"])){
                 <form action="handlers/user-login-signup-handler.php" method="POST" id="login" class="input-group-logIn" onsubmit="return ValidateLoginInfo()">
                     <div class="box-positioning-logIn">
                         <div class="textstuff">
-                        <div id="error_user_login_email" class="user-error"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div id="error_user_login_email" class="user-error"></div>
                             <label for="Email"><b>Email</b></label>
                             <input id="user_login_email" type="text" placeholder="Enter email" class="Input-field" name="Email"/>
-                            <div id="error_user_login_password" class="user-error"><i class="fas fa-exclamation-triangle"></i></div>
+                            <div id="error_user_login_password" class="user-error"></div>
                             <label for="Password"><b>Password</b></label>
                             <input id="user_login_password" type="password" placeholder="Enter password" name="Password" class="Input-field"/>
                         </div>
