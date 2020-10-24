@@ -2,15 +2,15 @@
 include '../includes/class-autoloader.inc.php';
 session_start();
 $user_name;
-if(isset($_SESSION["userName"])){
-    $user_name = $_SESSION["userName"];
+if(isset($_SESSION["userId"])){
+    $user_id = $_SESSION["userId"];
 }
 else{
     header("Location: index.php");
 }
 
 $userManager = new UserManager();
-$loggedUser= $userManager->getUserByName($user_name);
+$loggedUser= $userManager->getUserById($user_id);
 if(isset($_POST["user-update-btn"]) && $_POST["user-update-btn"] == "Submit"){
     $inputName = $userManager->sanitizeString($_POST["input-edit-name"]);
     $inputLastName = $userManager->sanitizeString($_POST["input-edit-last-name"]);
@@ -24,13 +24,29 @@ if(isset($_POST["user-update-btn"]) && $_POST["user-update-btn"] == "Submit"){
     else{
         if(strlen($inputName) < 50 || strlen($inputLastName) < 50 || strlen($inputEmail) < 50 || strlen($_POST["input-edit-password"]) < 50){
             if($inputPassword == $inputcPassword){
-                $user = new User($inputName, $inputLastName, $inputEmail, $inputPassword);
-                $user->SetId($loggedUser->GetId());
-                $userManager->updateUser($user);
-                $_SESSION["userName"] = $inputName;
-                $_SESSION["userEditError"] = false;
-                //echo "success";
-                header("Location: ../account-overview.php");
+                if($inputEmail == $loggedUser->GetEmail()){
+                        $user = new User($inputName, $inputLastName, $inputEmail, $inputPassword);
+                        $user->SetId($loggedUser->GetId());
+                        $userManager->updateUser($user);
+                        $_SESSION["userEditError"] = false;
+                        //echo "success";
+                        header("Location: ../account-overview.php");
+                }
+                else{
+                    if($userManager->validateEmail($inputEmail)){
+                        $_SESSION["userEditError"] = true;
+                        header("Location: ../account-edit.php");
+                    }
+                    else{
+                        $user = new User($inputName, $inputLastName, $inputEmail, $inputPassword);
+                        $user->SetId($loggedUser->GetId());
+                        $userManager->updateUser($user);
+                        $_SESSION["userEditError"] = false;
+                        //echo "success";
+                        header("Location: ../account-overview.php");
+                    }
+                }
+                
             }
             else{
                 $_SESSION["userEditError"] = true;

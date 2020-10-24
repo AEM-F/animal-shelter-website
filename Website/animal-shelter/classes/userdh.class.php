@@ -8,10 +8,10 @@ class UserDh{
         $this->database = $db;
     }
     
-    public function getUserByName($name){
-        $sql="SELECT * FROM website_shelter_users WHERE `Name`=:uname";
+    public function getUserById($id){
+        $sql="SELECT * FROM website_shelter_users WHERE `Id`=:id";
         $results=$this->database->connect()->prepare($sql);
-        $results->execute(['uname' => $name]);
+        $results->execute(['id' => $id]);
 
         $obj;
         foreach ($results as $row) {
@@ -58,7 +58,7 @@ class UserDh{
 
         $results->execute();
 
-        if($results->rowCount() == 1){
+        if($results->rowCount() > 0){
             return true;
         }
         else{

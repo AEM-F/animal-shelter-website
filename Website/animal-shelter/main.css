@@ -582,7 +582,7 @@ text-shadow: 0 0 3px #4E8A8A;
 .register-container{
   background-color: antiquewhite;
   display: grid;
-  height: 600px;
+  height: 640px;
   width: 380px;
   padding: 31px;
   /*Center*/
@@ -590,6 +590,7 @@ text-shadow: 0 0 3px #4E8A8A;
   border: 3px solid #4E8A8A;
   border-radius: 20px;
 }
+
 
 /* Center the avatar image inside this container */
 .imgcontainer {
@@ -683,7 +684,7 @@ label.Check-box-Remember-Me{
   #loginError-text,
   #signupError-text{
     margin:0;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
     text-align: center;
     color: #fd1d1dcc;
@@ -704,7 +705,7 @@ label.Check-box-Remember-Me{
 .user-edit-card-wrapper{
   margin: 10px;
   border-radius: 20px;
-  width: 300px;
+  width: 320px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -717,7 +718,7 @@ label.Check-box-Remember-Me{
 }
 
 .user-edit-card-wrapper{
-  height: 600px;
+  height: 700px;
 }
 
 .user-card-header{
@@ -755,11 +756,12 @@ label.Check-box-Remember-Me{
  display: flex;
  flex-direction: column;
  align-items: center;
- justify-content: space-around;
+ justify-content: center;
 }
 
 .user-edit-text-input-wrap{
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
 }
@@ -808,8 +810,25 @@ border-radius: 0.3rem;
 
 .user-edit-error{
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  color:rgb(212, 31, 31);
 }
+
+.user-error{
+  display: none;
+  margin-top: 4px;
+  align-self: center;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  border-radius: 5px;
+  width: 85%;
+  background: rgba(238, 37, 37, 0.849);
+  color: #e0e0e0;
+  box-shadow: 0 1px 6px 0 #f73434;
+}
+
 
 /* footer section */
 .main-footer{
@@ -1049,6 +1068,11 @@ border-radius: 20px 20px 0 0;
 
   /* user content*/
 
+  .account-edit-content{
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
   .user-card-wrapper{
     flex-direction: row;
     width: 70%;
@@ -1057,8 +1081,8 @@ border-radius: 20px 20px 0 0;
 
 .user-edit-card-wrapper{
   flex-direction: row;
-  width: 70%;
-  height:350px;
+  width: 80%;
+  height:370px;
 }
 
 .user-card-header{
@@ -1076,6 +1100,7 @@ border-radius: 20px 20px 0 0;
 .user-edit-info-form{
   height: 100%;
   align-items: flex-start;
+  justify-content: space-between;
 }
 
 .user-edit-text-input-wrap{

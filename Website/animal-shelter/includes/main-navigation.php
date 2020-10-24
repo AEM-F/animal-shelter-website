@@ -12,9 +12,9 @@
         <nav class="main-nav">
             <ul class="main-nav_items">
                 <?php
-                if(isset($_SESSION["userName"])){
+                if(isset($_SESSION["userId"])){
                     echo "<li class=\"main-nav_item main-nav_item--user\">
-                    <p>" . "Hello, " . $userManager->getUserByName($_SESSION["userName"])->GetName() . "</p>
+                    <p>" . "Hello, " . $userManager->getUserById($_SESSION["userId"])->GetName() . "</p>
                     </li>";
 
                     echo "<li class=\"main-nav_item main-nav_item--cta\">
@@ -32,7 +32,7 @@
                     <a href="#l"><i class="fas fa-donate"></i> Donate</a>
                 </li>
                 <?php
-                if(isset($_SESSION["userName"])){
+                if(isset($_SESSION["userId"])){
                     echo "<li class=\"main-nav_item main-nav_item--cta\">
                     <a href=\"handlers/user-logout-handler.php\"><i class=\"fas fa-sign-in-alt\"></i>Log Out</a>
                 </li>";
@@ -50,7 +50,7 @@
     <nav class="mobile-nav">
         <ul class="mobile-nav_items">
             <?php 
-            if(isset($_SESSION["userName"])){
+            if(isset($_SESSION["userId"])){
                 echo "<li class=\"mobile-nav_item mobile-nav_item--cta\">
                 <a href=\"account-overview.php\"><i class=\"fas fa-user-circle\"></i>Account</a>
             </li>";
@@ -66,7 +66,7 @@
                 <a href="#l"><i class="fas fa-donate"></i> Donate</a>
             </li>
             <?php
-                if(isset($_SESSION["userName"])){
+                if(isset($_SESSION["userId"])){
                     echo "<li class=\"mobile-nav_item mobile-nav_item--cta\">
                     <a href=\"handlers/user-logout-handler.php\">Log Out</a>
                 </li>";

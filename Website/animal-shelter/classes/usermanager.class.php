@@ -9,8 +9,8 @@ class UserManager{
 
     /*User management section*/
 
-    public function getUserByName($name){
-        return $this->userDh->getUserByName($name);
+    public function getUserById($id){
+        return $this->userDh->getUserById($id);
     }
 
     public function getUserByEmail($email){

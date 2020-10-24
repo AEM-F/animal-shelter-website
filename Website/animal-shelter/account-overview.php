@@ -2,15 +2,15 @@
 include 'includes/class-autoloader.inc.php';
 session_start();
 $user_name;
-if(isset($_SESSION["userName"])){
-    $user_name = $_SESSION["userName"];
+if(isset($_SESSION["userId"])){
+    $user_id = $_SESSION["userId"];
 }
 else{
     header("Location: index.php");
 }
-
+$_SESSION["userEditError"] = false;
 $userManager = new UserManager();
-$loggedUser= $userManager->getUserByName($user_name);
+$loggedUser= $userManager->getUserById($user_id);
 ?>
 
 <!DOCTYPE html>

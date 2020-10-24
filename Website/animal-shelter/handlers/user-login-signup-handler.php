@@ -17,7 +17,7 @@ if(isset($_POST["loginButton"])){
             $isValid = $userManager->ValidateLogIn($inputEmail,$inputPassword);
             if($isValid){
                 $user = $userManager->getUserByEmail($inputEmail);
-                $_SESSION["userName"] = $user->GetName();
+                $_SESSION["userId"] = $user->GetId();
                 $_SESSION["logInError"] = false;
                 header("Location: ../index.php");
             }
@@ -49,7 +49,7 @@ elseif(isset($_POST['signUpButton'])){
             if($inputPassword == $inputcPassword){
                 if(!$userManager->validateEmail($inputEmail)){
                     $userManager->addUser($inputName, $inputLastName, $inputEmail, $inputPassword);
-                    $_SESSION["userName"] = $inputName;
+                    $_SESSION["userId"] = $userManager->getUserByEmail($inputEmail)->GetId();
                     $_SESSION["signupError"] = false;
                     header("Location: ../index.php");
                 }

@@ -1,7 +1,7 @@
 <?php 
 include 'includes/class-autoloader.inc.php';
 session_start();
-if(isset($_SESSION["userName"])){
+if(isset($_SESSION["userId"])){
     header("Location: index.php");
 }
 $errorVal = false;
@@ -29,21 +29,27 @@ $errorVal = $_SESSION["signupError"];
         <?php include 'includes/main-navigation.php'; ?>
         <section class="main-register-content">
             <div class="register-container">
-                <form method="POST" action="handlers/user-login-signup-handler.php">
+            <?php
+                if($errorVal){
+                echo "<p id=\"signupError-text\">Invalid input!</p>";
+                }
+                ?>
+                <form method="POST" action="handlers/user-login-signup-handler.php" onsubmit="return ValidateUserSignUpInfo()">
+                    <div id="error_user_signup_name" class="user-error"><i class="fas fa-exclamation-triangle"></i></div>
                     <label for="Name"><b>Name</b></label>
-                    <input type="text" placeholder="Enter name" class="UserStyle Input-field" name="FirstName" required />
-
+                    <input id="user_signup_name" type="text" placeholder="Enter name" class="UserStyle Input-field" name="FirstName" />
+                    <div id="error_user_signup_lastName" class="user-error"><i class="fas fa-exclamation-triangle"></i></div>
                     <label for="LastName"><b>Last name</b></label>
-                    <input type="text" placeholder="Enter LastName" class="UserStyle Input-field" name="LastName" required />
-
+                    <input id="user_signup_lastName" type="text" placeholder="Enter LastName" class="UserStyle Input-field" name="LastName" />
+                    <div id="error_user_signup_email" class="user-error"><i class="fas fa-exclamation-triangle"></i></div>
                     <label for="Email"><b>Email</b></label>
-                    <input type="text" placeholder="Enter email address" class="Input-field" name="Email" required />
-
+                    <input id="user_signup_email" type="text" placeholder="Enter email address" class="Input-field" name="Email" />
+                    <div id="error_user_signup_password" class="userEPError user-error"><i class="fas fa-exclamation-triangle"></i></div>
                     <label for="Password"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="Password" class="Input-field" required />
-
+                    <input id="user_signup_password" type="password" placeholder="Enter Password" name="Password" class="Input-field" />
+                    <div id="error_user_signup_cpassword" class="user-error"><i class="fas fa-exclamation-triangle"></i></div>
                     <label for="PasswordRpt"><b>Password confirm</b></label>
-                    <input type="password" placeholder="Enter Password again" name="PasswordRpt" class="Input-field" required />
+                    <input id="user_signup_cpassword" type="password" placeholder="Enter Password again" name="PasswordRpt" class="Input-field" />
 
                     <label class="Check-box-Accept-policy"> <input type="checkbox" checked="checked" name="policyAccept" /> Accept policy </label>
 
@@ -52,14 +58,10 @@ $errorVal = $_SESSION["signupError"];
                         <h5>Already a member click <a href="login.php" class="singUpText">Here</a></h5>
                     </label>
                 </form>
-                <?php
-                if($errorVal){
-                echo "<p id=\"signupError-text\">Invalid input!</p>";
-                }
-                ?>
             </div>
         </section>
         <?php include 'includes/main-footer.php'; ?>
+        <script src="js/validate-signup.js"></script>
         <script src="js/shared.js"></script>
     </body>
 </html>

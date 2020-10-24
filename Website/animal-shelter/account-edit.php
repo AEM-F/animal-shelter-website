@@ -2,8 +2,8 @@
 include 'includes/class-autoloader.inc.php';
 session_start();
 $user_name;
-if(isset($_SESSION["userName"])){
-    $user_name = $_SESSION["userName"];
+if(isset($_SESSION["userId"])){
+    $user_id = $_SESSION["userId"];
 }
 else{
     header("Location: index.php");
@@ -17,13 +17,12 @@ if(isset($_SESSION["userEditError"])){
 }
 
 $userManager = new UserManager();
-$loggedUser= $userManager->getUserByName($user_name);
+$loggedUser= $userManager->getUserById($user_id);
 ?>
-
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
     <head>
-    <title>Account-Edit-Page</title>
+    <title>Account-Edit-page</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,30 +41,35 @@ $loggedUser= $userManager->getUserByName($user_name);
                 <i class="fas fa-user-edit"></i>
             </div>
             <div class="user-card-body">
-                <form action="handlers/user-edit-handler.php" method="post" class="user-edit-info-form">
+                <form action="handlers/user-edit-handler.php" method="post" class="user-edit-info-form" onsubmit="return ValidateUserEditInfo()">
+                <div id="error_user_edit_name" class="user-error"><i class="fas fa-exclamation-triangle"></i></div>
                     <div id="user-name" class="user-edit-text-input-wrap">
                         <b>Name:</b>
-                        <input class="user-edit-text-input" type="text" name="input-edit-name" placeholder="" value="<?php echo $loggedUser->GetName();?>" required />
+                        <input id="user_edit_name" class="user-edit-text-input" type="text" name="input-edit-name" placeholder="" value="<?php echo $loggedUser->GetName();?>" />
                     </div>
+                    <div id="error_user_edit_password" class="userEPError user-error"><i class="fas fa-exclamation-triangle"></i></div>
                     <div id="user-password" class="user-edit-text-input-wrap">
                         <b>Password:</b>
-                        <input class="user-edit-text-input" type="password" name="input-edit-password" placeholder="" value="" required />
+                        <input id="user_edit_password" class="user-edit-text-input" type="password" name="input-edit-password" placeholder="" value=""/>
                     </div>
+                    <div id="error_user_edit_cpassword" class="user-error"><i class="fas fa-exclamation-triangle"></i></div>
                     <div id="user-cPassword" class="user-edit-text-input-wrap">
                         <b>Confirm Password:</b>
-                        <input class="user-edit-text-input" type="password" name="input-edit-confirm-password" placeholder="" value="" required />
+                        <input id="user_edit_cpassword" class="user-edit-text-input" type="password" name="input-edit-confirm-password" placeholder="" value=""/>
                     </div>
+                    <div id="error_user_edit_lastName" class="user-error"><i class="fas fa-exclamation-triangle"></i></div>
                     <div id="user-lastName" class="user-edit-text-input-wrap">
                         <b>Last Name:</b>
-                        <input class="user-edit-text-input" type="text" name="input-edit-last-name" placeholder="" value="<?php echo $loggedUser->GetLastName();?>" required />
+                        <input id="user_edit_lastName" class="user-edit-text-input" type="text" name="input-edit-last-name" placeholder="" value="<?php echo $loggedUser->GetLastName();?>"/>
                     </div>
+                    <div id="error_user_edit_email" class="user-error"><i class="fas fa-exclamation-triangle"></i></div>
                     <div id="user-email" class="user-edit-text-input-wrap">
                         <b>Email:</b>
-                        <input class="user-edit-text-input" type="email" name="input-edit-email" placeholder="" value="<?php echo $loggedUser->GetEmail();?>" required />
+                        <input id="user_edit_email" class="user-edit-text-input" type="text" name="input-edit-email" placeholder="" value="<?php echo $loggedUser->GetEmail();?>"/>
                     </div>
                     <div id="user-edit-buttons" class="user-edit-form-btn-wrapper">
                         <a href="account-overview.php" class="user-edit-btn">Cancel</a>
-                        <input type="submit" name="user-update-btn" value="Submit" class="user-edit-submit-btn" />
+                        <input id="user_edit_name" type="submit" name="user-update-btn" value="Submit" class="user-edit-submit-btn" />
                     </div>
                 </form>
                 <?php
@@ -77,6 +81,7 @@ $loggedUser= $userManager->getUserByName($user_name);
         </div>
     </section>
     <?php include 'includes/main-footer.php'; ?>
+    <script src="js/validate-editinfo.js"></script>
     <script src="js/shared.js"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@ if(isset($_SESSION["logInError"])){
 $errorVal = $_SESSION["logInError"];
   }
 
-if(isset($_SESSION["userName"])){
+if(isset($_SESSION["userId"])){
     header("Location: index.php");
   }
   
@@ -37,15 +37,20 @@ if(isset($_SESSION["userName"])){
                         <h1>Hi! come here often?</h1>
                     </div>
                 </div>
-
-                <form action="handlers/user-login-signup-handler.php" method="POST" id="login" class="input-group-logIn">
+                <?php
+                if($errorVal){
+                    echo "<p id=\"loginError-text\">Invalid credentials!</p>";
+                }
+                ?>
+                <form action="handlers/user-login-signup-handler.php" method="POST" id="login" class="input-group-logIn" onsubmit="return ValidateLoginInfo()">
                     <div class="box-positioning-logIn">
                         <div class="textstuff">
+                        <div id="error_user_login_email" class="user-error"><i class="fas fa-exclamation-triangle"></i></div>
                             <label for="Email"><b>Email</b></label>
-                            <input type="text" placeholder="Enter email" class="Input-field" name="Email" required />
-
+                            <input id="user_login_email" type="text" placeholder="Enter email" class="Input-field" name="Email"/>
+                            <div id="error_user_login_password" class="user-error"><i class="fas fa-exclamation-triangle"></i></div>
                             <label for="Password"><b>Password</b></label>
-                            <input type="password" placeholder="Enter password" name="Password" class="Input-field" required />
+                            <input id="user_login_password" type="password" placeholder="Enter password" name="Password" class="Input-field"/>
                         </div>
                         <label class="Check-box-Remember-Me"> <input type="checkbox" checked="checked" name="remember" /> Remember me </label>
                         <!-- Submit -->
@@ -53,14 +58,10 @@ if(isset($_SESSION["userName"])){
                     </div>
                     <h5>Not a member click <a href="signup.php" class="singUpText">Here</a></h5>
                 </form>
-                <?php
-                if($errorVal){
-                echo "<p id=\"loginError-text\">Invalid credentials!</p>";
-                }
-                ?>
             </div>
         </section>
         <?php include 'includes/main-footer.php'; ?>
+        <script src="js/validate-login.js"></script>
         <script src="js/shared.js"></script>
     </body>
 </html>

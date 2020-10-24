@@ -3,6 +3,8 @@ include 'includes/class-autoloader.inc.php';
 $animalManager = new AnimalManager();
 $userManager = new UserManager();
 session_start();
+$_SESSION["logInError"]=false;
+$_SESSION["signupError"]=false;
 ?>
 
 <!DOCTYPE html>
