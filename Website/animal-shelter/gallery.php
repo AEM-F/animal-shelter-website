@@ -9,6 +9,13 @@ $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $animalsPerPage = 10;
 $startNr = ($animalsPerPage * $page) - $animalsPerPage;
 $total_pages = ceil($totalAnimals / $animalsPerPage);
+if(isset($_GET['page'])){
+    if($_GET['page'] > $total_pages || $_GET['page'] <= 0){
+        header("Location: gallery.php");
+    }
+}
+
+
 $animalsByLimit = $animalManager->getAllAnimalsByLimit($startNr, $animalsPerPage);
 ?>
 
