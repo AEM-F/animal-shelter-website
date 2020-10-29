@@ -46,7 +46,7 @@ class AnimalManager{
         <div class=\"pet-text\">
           <h3>" . $animal->GetName() . "</h3>
           <p>Sex: " . $animal->GetSex() . " | Breed: ". $animal->GetBreed() . " | Size: " . $animal->GetSize() . " | Age: " . $animal->GetAge() . "</p>
-          <a href=\"\">More Info</a>
+          <a href=\"animal-showcase.php?aId=". $animal->GetId() ."\">More Info</a>
         </div>
       </article>";
     }
