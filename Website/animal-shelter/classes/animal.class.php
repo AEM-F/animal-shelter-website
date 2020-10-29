@@ -31,5 +31,6 @@ class Animal {
     public function GetDescription() { return $this->description; }
     public function GetImgLink() { return $this->imgLink; }
     public function GetType() { return $this->type; }
+    public function GetAnimalShortDescription(){ return "Sex: " . $this->GetSex() . "|" . "Breed: ". $this->GetBreed() . "|"  . "Size: ". $this->GetSize() . "|" . "Age: ". $this->GetAge();}
 }
 ?>

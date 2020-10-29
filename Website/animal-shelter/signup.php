@@ -1,4 +1,4 @@
-<?php 
+<?php
 include 'includes/class-autoloader.inc.php';
 session_start();
 if(isset($_SESSION["userId"])){

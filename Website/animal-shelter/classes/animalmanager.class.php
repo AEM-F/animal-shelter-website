@@ -56,14 +56,14 @@ class AnimalManager{
         <img src=\"" . $animal->GetImgLink() . "\" alt=\"Animal photo\">
         <div class=\"new-pet-text\">
         <h3>" . $animal->GetName() . "</h3>
-        <p>" . $animal->GetDescription() . "</p>
+        <p>" . substr($animal->GetDescription(),0,200). "..." . "</p>
         </div>
     </article>";
     }
 
     public function showAnimalForGallery($animal){
       echo "<article class=\"pet-card-gallery\">
-      <a href=\"\">
+      <a href=\"animal-showcase.php?aId=". $animal->GetId() ."\">
   <img src=\"" . $animal->GetImgLink() . "\" alt=\"Animal Photo\">
   <div class=\"pcg-text\">
      <div class=\"pet-name\">" . $animal->GetName() . "</div>
