@@ -26,7 +26,7 @@
                     <a href="gallery.php"><i class="fas fa-camera-retro"></i> Gallery</a>
                 </li>
                 <li class="main-nav_item main-nav_item--cta">
-                    <a href="#"><i class="fas fa-info-circle"></i> About us</a>
+                    <a href="aboutUs.php"><i class="fas fa-info-circle"></i> About us</a>
                 </li>
                 <li class="main-nav_item main-nav_item--cta">
                     <a href="#l"><i class="fas fa-donate"></i> Donate</a>
