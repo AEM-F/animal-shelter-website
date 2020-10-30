@@ -1,5 +1,7 @@
 <?php   
-
+include 'includes/class-autoloader.inc.php';
+session_start();
+$userManager = new UserManager();
 ?>
 
 <!DOCTYPE html>
@@ -66,11 +68,11 @@
                 </div>
                 </div>
                 
-            <!-- <div class="user-info-bot-animal-format"> -->
+            <div class="user-info-bot-animal-format">
                 <div class="user-info-bot-animal-pic1">  </div>
                 <div class="user-info-bot-animal-pic2"> </div>
                 <div class="user-info-bot-animal-pic3"> </div>
-            <!-- </div> -->
+            </div>
 
             <div>
 
@@ -81,6 +83,6 @@
         
 </div>
     <?php include 'includes/main-footer.php'; ?>
-  
+    <script src="js/shared.js"></script>
 </body>
 </html>
