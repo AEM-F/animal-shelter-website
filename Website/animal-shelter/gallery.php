@@ -100,7 +100,7 @@ if(isset($_GET['page'])){
             <?php
             if($page>1){
                 // btn first page
-                echo "<a href='" . $_SERVER['PHP_SELF'] . $filter . "' title='Go to the first page.' class='first-page-btn'>";
+                echo "<a href='" . $_SERVER['PHP_SELF'] . "?page={1}" . $filter . "' title='Go to the first page.' class='first-page-btn'>";
                     echo "<<";
                 echo "</a>";
                  
