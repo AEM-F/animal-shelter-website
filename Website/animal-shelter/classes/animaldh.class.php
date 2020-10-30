@@ -50,5 +50,18 @@ class AnimalDh{
         }
         return $animals;
     }
+
+    public function getTypeAnimalsByLimit($startNr,$nrPerPage,$type){
+        $sql = "SELECT * FROM website_shelter_animals WHERE animal_type=\"{$type}\" ORDER BY animal_id DESC LIMIT {$startNr}, {$nrPerPage}";
+        $results = $this->database->connect()->query($sql);
+
+        $obj;
+        $animals = [];
+        foreach ($results as $row) {
+            $obj = new Animal($row ["animal_id"], $row ["animal_name"], $row ["animal_age"], $row ["animal_breed"], $row ["animal_sex"], $row ["animal_size"], $row ["animal_description"], $row ["animal_image_link"], $row ["animal_type"]);
+            $animals[] = $obj;
+        }
+        return $animals;
+    }
 }
 ?>

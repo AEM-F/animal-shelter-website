@@ -27,11 +27,15 @@ class AnimalManager{
             return $this->animalDh->getAllAnimalsByLimit($startNr,$nrPerPage);
     }
 
+    public function getTypeAnimalsByLimit($startNr,$nrPerPage,$type){
+            return $this->animalDh->getTypeAnimalsByLimit($startNr,$nrPerPage,$type);
+    }
+
     public function getAnimalsByType($animals, $type){ 
         $animalsByType = [];
         foreach ($animals as $animal)
         {
-            if($type == $animal->type){
+            if($type == $animal->GetType()){
                 $animalsByType[] = $animal;
             }
         }

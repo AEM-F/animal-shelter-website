@@ -427,9 +427,18 @@ color: #212832;
   letter-spacing: 2px;
 }
 
+.animal-quick-filter-container form{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .dog-filter-btn,
 .cat-filter-btn,
-.bird-filter-btn{
+.bird-filter-btn,
+.all-filter-btn{
   height: 100%;
   width: 100%;
   border: none;
@@ -439,10 +448,10 @@ color: #212832;
   font-family: 'Bangers', cursive;
   color: #4E8A8A;
   background-color: #212832;
+  letter-spacing: 2px;
 }
 
 .dog-filter-btn{
-  border-radius: 6px 0 0 6px;
   border-right: 1px solid #4E8A8A;
 }
 .bird-filter-btn{
@@ -450,9 +459,15 @@ color: #212832;
   border-left: 1px solid #4E8A8A;
 }
 
+.all-filter-btn{
+  border-radius: 6px 0 0 6px;
+  border-right: 1px solid #4E8A8A;
+}
+
 .dog-filter-btn:hover,
 .cat-filter-btn:hover,
-.bird-filter-btn:hover{
+.bird-filter-btn:hover,
+.all-filter-btn:hover{
   background-color: #4E8A8A;
   color: #212832;
   border: 1px solid #212832;
@@ -1161,9 +1176,18 @@ border-radius: 20px 20px 0 0;
     display: flex;
   }
 
+  .animal-quick-filter-container form{
+    width: 70%;
+  }
+
   .dog-filter-btn,
   .cat-filter-btn,
-  .bird-filter-btn{
+  .bird-filter-btn
+  {
+    width: 30%;
+  }
+
+  .all-filter-btn{
     width: 20%;
   }
 
