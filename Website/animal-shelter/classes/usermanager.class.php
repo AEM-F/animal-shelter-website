@@ -22,8 +22,8 @@ class UserManager{
          $this->userDh->updateUser($user);
     }
 
-    public function addUser($name, $lastName, $email, $password){
-        $user = new User($name, $lastName, $email, $password);
+    public function addUser($name, $lastName, $email, $password, $role){
+        $user = new User($name, $lastName, $email, $password, $role);
          $this->userDh->insertUser($user);
         return true;
     }

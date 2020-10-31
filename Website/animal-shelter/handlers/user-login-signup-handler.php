@@ -19,7 +19,12 @@ if(isset($_POST["loginButton"])){
                 $user = $userManager->getUserByEmail($inputEmail);
                 $_SESSION["userId"] = $user->GetId();
                 $_SESSION["logInError"] = false;
-                header("Location: ../index.php");
+                if($user->GetRole() == "Admin"){
+                    header("Location: ../admin/animal-overview.php");
+                }
+                else{
+                    header("Location: ../index.php");
+                }
             }
             else{
                 $_SESSION["logInError"] = true;
@@ -48,7 +53,7 @@ elseif(isset($_POST['signUpButton'])){
         if(strlen($inputName) < 50 || strlen($inputLastName) < 50 || strlen($inputEmail) < 50 || strlen($_POST["input-edit-password"]) < 50){
             if($inputPassword == $inputcPassword){
                 if(!$userManager->validateEmail($inputEmail)){
-                    $userManager->addUser($inputName, $inputLastName, $inputEmail, $inputPassword);
+                    $userManager->addUser($inputName, $inputLastName, $inputEmail, $inputPassword, "Member");
                     $_SESSION["userId"] = $userManager->getUserByEmail($inputEmail)->GetId();
                     $_SESSION["signupError"] = false;
                     header("Location: ../index.php");

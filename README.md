@@ -2,4 +2,4 @@
 Members: Alexandru Emilian, Evaldas Drąsutis
 
 #Database export file link:
-https://drive.google.com/file/d/1oJIs1Jfss2aFUuK-mF1ul7GlbFWXoTt3/view?usp=sharing
+https://drive.google.com/file/d/1dRXjNm4fTEj_NaQIiLIUSV8sRTG6uPxq/view?usp=sharing
