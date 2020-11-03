@@ -81,7 +81,7 @@ $loggedUser= $userManager->getUserById($user_id);
         </div>
     </section>
     <?php include 'includes/main-footer.php'; ?>
-    <script src="js/validate-editinfo.js"></script>
+    <script src="js/validate-editInfo.js"></script>
     <script src="js/shared.js"></script>
 </body>
 </html>

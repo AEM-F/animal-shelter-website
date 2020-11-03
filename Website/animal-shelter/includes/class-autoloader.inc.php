@@ -12,6 +12,6 @@ function myAutoLoader($className){
     }
 
     $extension = '.class.php';
-    require_once $path . $className . $extension;
+    require_once $path . strtolower($className) . $extension;
 }
 ?>
