@@ -308,6 +308,15 @@ body {
   color: #FBD46D;
 }
 
+.animal-overview-form-all{
+  width: 100px;
+  min-height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+
 #input_search_name{
   margin:0 2px;
   border-radius: 5px;
@@ -330,6 +339,12 @@ body {
   text-decoration: none;
   transition: 0.3s;
   letter-spacing: 1px;
+}
+
+.animal-overview-form-all input{
+  padding: 0.4rem 0.5rem;
+  width: 100px;
+  font-size: 1.3rem;
 }
 
 .animal-overview-container{

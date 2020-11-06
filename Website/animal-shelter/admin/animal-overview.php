@@ -12,6 +12,44 @@ if(isset($_SESSION["userId"])){
 else{
     header("Location: ../index.php");
 }
+$animalManager = new AnimalManager();
+$totalAnimals = 0;
+// page is the current page, if there's nothing set, default is page 1
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$animalsPerPage = 5;
+$startNr = ($animalsPerPage * $page) - $animalsPerPage;
+$total_pages=0;
+$animalsByLimit= array();
+$filter="";
+
+if(isset($_GET["animal-all-submit-btn"])){
+    if(isset($_SESSION["admAnimalFilter"])){
+        unset($_SESSION['admAnimalFilter']);
+    }
+}
+
+if(isset($_GET["input_animal_name"])){
+    $aName = $animalManager->sanitizeString($_GET["input_animal_name"]);
+    $_SESSION["admAnimalFilter"] = $aName;
+    }
+
+if(isset($_SESSION["admAnimalFilter"])){
+    $filter = $_SESSION["admAnimalFilter"];
+    $animalsByLimit = $animalManager->getAnimalsByNameAndLimit($startNr,$animalsPerPage, $filter);
+    $totalAnimals = $animalManager->getTotalAnimalsByName($filter);
+    $total_pages=ceil( $totalAnimals / $animalsPerPage );
+    }
+else{
+    $totalAnimals = $animalManager->getTotalAnimals();
+    $total_pages = ceil($totalAnimals / $animalsPerPage);
+    $animalsByLimit = $animalManager->getAllAnimalsByLimit($startNr, $animalsPerPage);
+}
+
+if(isset($_GET['page'])){
+    if($_GET['page'] > $total_pages || $_GET['page'] <= 0){
+        header("Location: gallery.php");
+    }
+}
 
 ?>
 
@@ -37,68 +75,79 @@ else{
                     Animal Overview
                 </p>
             </div>
-            <form action="" method="get" class="animal-overview-form-search">
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get" class="animal-overview-form-search">
                             <label for="input-animal-name">Search Name</label>
-                            <input type="text" name="input-animal-name" id="input_search_name">
+                            <input type="text" name="input_animal_name" id="input_search_name">
                         <input type="submit" value="Submit" name="animal-search-submit-btn" class="animal-search-submit-btn">
                     </form>
             <div class="animal-overview-container">
                 <div class="animal-overview-list">
-                    <button id="animal-1" class="animal-container-btn">
-                        <img src="../images/Mario.jpg" alt="Animal Photo">
-                        <div class="animal-short-info">
-                            <p>Sex: MALE | Breed: unknown | Size: MEDIUM | Age: unknown</p>
-                        </div>
-                        <p class="animal-container-name">
-                                Mario
-                        </p>
-                    </button>
-
-                    <button id="animal-2" class="animal-container-btn">
-                        <img src="../images/mia.jpg" alt="Animal Photo">
-                        <div class="animal-short-info">
-                            <p>Sex: FEMALE | Breed: unknown | Size: SMALL | Age: unknown</p>
-                        </div>
-                        <p class="animal-container-name">
-                                Mia
-                        </p>
-                    </button>
-
-                    <button id="animal-3" class="animal-container-btn">
-                        <img src="../images/penelope.jpg" alt="Animal Photo">
-                        <div class="animal-short-info">
-                            <p>Sex: FEMALE | Breed: unknown | Size: SMALL | Age: unknown</p>
-                        </div>
-                        <p class="animal-container-name">
-                                Penelope
-                        </p>
-                    </button>
-
-                    <button id="animal-4" class="animal-container-btn">
-                        <img src="../images/Maxy-dog-new.jpg" alt="Animal Photo">
-                        <div class="animal-short-info">
-                            <p>Sex: MALE | Breed: unknown | Size: LARGE | Age: unknown</p>
-                        </div>
-                        <p class="animal-container-name">
-                                Max
-                        </p>
-                    </button>
-
-                    <button id="animal-5" class="animal-container-btn">
-                        <img src="../images/pug.png" alt="Animal Photo">
-                        <div class="animal-short-info">
-                            <p>Sex: MALE | Breed: unknown | Size: SMALL | Age: unknown</p>
-                        </div>
-                        <p class="animal-container-name">
-                                Frank:)
-                        </p>
-                    </button>
+                    <?php 
+                        foreach ($animalsByLimit as $animal) {
+                            $animalManager->showAnimalForAnimalOverview($animal);
+                        }
+                    ?>
                 </div>
                 <div class="animal-overview-list-controls">
-                    <a href="" title='Go to the first page.' class="a-first-page-btn"><<</a>
-                    <a href="" title='Previous page is .' class="a-previous-page-btn"><</a>
-                    <a href="" title='Next page is .' class="a-next-page-btn push">></a>
-                    <a href="" title='Last page is .' class="a-last-page-btn">>></a>
+                <?php
+                    if($page>1){
+                        // btn first page
+                        echo "<a href='" . $_SERVER['PHP_SELF'] . "?page=1";
+                        if($filter != ""){
+                            echo"&input_animal_name=". $filter . "&animal-search-submit-btn=Submit";
+                        }
+                        else{
+                            echo "";
+                        } 
+                         echo "' title='Go to the first page.' class='a-first-page-btn'>";
+                            echo "<<";
+                        echo "</a>";
+                        
+                        // btn previous page
+                        $prev_page = $page - 1;
+                        echo "<a href='" . $_SERVER['PHP_SELF'] . "?page={$prev_page}";
+                        if($filter != ""){
+                            echo"&input_animal_name=". $filter . "&animal-search-submit-btn=Submit";
+                        }
+                        else{
+                            echo "";
+                        }
+                         echo "' title='Previous page is {$prev_page}.' class='a-previous-page-btn'>";
+                            echo "<";
+                        echo "</a>";
+                        
+                    } 
+                    echo "<form action=\"" . $_SERVER['PHP_SELF'] . "\" method=\"get\" class=\"animal-overview-form-all\">
+                            <input type=\"submit\" value=\"Show All\" name=\"animal-all-submit-btn\" class=\"animal-search-submit-btn\">
+                        </form>";
+                        
+                    if($page<$total_pages){
+                        // btn the next page
+                        $next_page = $page + 1;
+                        echo "<a href='" . $_SERVER['PHP_SELF'] . "?page={$next_page}";
+                        if($filter != ""){
+                            echo"&input_animal_name=". $filter . "&animal-search-submit-btn=Submit";
+                        }
+                        else{
+                            echo "";
+                        }
+                        echo "' title='Next page is {$next_page}.' class='a-next-page-btn push'>";
+                            echo "> ";
+                        echo "</a>";
+                        
+                        // btn the last page
+                        echo "<a href='" . $_SERVER['PHP_SELF'] . "?page={$total_pages}";
+                        if($filter != ""){
+                            echo"&input_animal_name=". $filter . "&animal-search-submit-btn=Submit";
+                        }
+                        else{
+                            echo "";
+                        } 
+                         echo "' title='Last page is {$total_pages}.' class='a-last-page-btn'>";
+                            echo ">>";
+                        echo "</a>";
+                    }
+                ?>
                 </div>
             </div>
             <form action="" method="post" class="animal-overview-form">
