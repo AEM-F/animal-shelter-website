@@ -13,7 +13,7 @@ class UserDh{
         $results=$this->database->connect()->prepare($sql);
         $results->execute(['id' => $id]);
 
-        $obj;
+        $obj = null;
         foreach ($results as $row) {
             $obj = new User($row ["Name"], $row ["LastName"], $row ["Email"], $row ["Password"], $row["Role"]);
             $obj->SetId($row ["Id"]);
@@ -26,7 +26,7 @@ class UserDh{
         $results=$this->database->connect()->prepare($sql);
         $results->execute(['email' => $email]);
 
-        $obj;
+        $obj = null;
         foreach ($results as $row) {
             $obj = new User($row ["Name"], $row ["LastName"], $row ["Email"], $row ["Password"], $row["Role"]);
             $obj->SetId($row ["Id"]);
@@ -68,7 +68,8 @@ class UserDh{
 
     public function updateUser($user){
         $sql="UPDATE `website_shelter_users` SET `Name`=:uname, `LastName`=:lastName, `Email`=:email, `Password`=:upassword, `Role`=:urole WHERE `Id`=:id";
-        $results=$this->database->connect()->prepare($sql);
+        try{
+            $results=$this->database->connect()->prepare($sql);
         $results->bindValue(':id', $user->GetId());
         $results->bindValue(':uname', $user->GetName());
         $results->bindValue(':lastName', $user->GetLastName());
@@ -76,6 +77,11 @@ class UserDh{
         $results->bindValue(':upassword', $user->GetPassword());
         $results->bindValue(':urole', $user->GetRole());
         $results->execute();
+        }
+        catch(Exception $e){
+            return false;
+        }
+        return true;
     }
 
     public function insertUser($user){

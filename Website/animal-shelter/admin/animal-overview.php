@@ -1,10 +1,10 @@
 <?php
 include '../includes/class-autoloader.inc.php';
 session_start();
-$userManager = new UserManager();
+$animalShelter = AnimalShelter::GetInstance();
 if(isset($_SESSION["userId"])){
     $user_id = $_SESSION["userId"];
-    $loggedUser= $userManager->getUserById($user_id);
+    $loggedUser= $animalShelter->GetUserHelper()->getUserById($user_id);
     if($loggedUser->GetRole() != "Admin"){
         header("Location: ../index.php");
     }
@@ -12,7 +12,6 @@ if(isset($_SESSION["userId"])){
 else{
     header("Location: ../index.php");
 }
-$animalManager = new AnimalManager();
 $totalAnimals = 0;
 // page is the current page, if there's nothing set, default is page 1
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -29,20 +28,20 @@ if(isset($_GET["animal-all-submit-btn"])){
 }
 
 if(isset($_GET["input_animal_name"])){
-    $aName = $animalManager->sanitizeString($_GET["input_animal_name"]);
+    $aName = $animalShelter->sanitizeString($_GET["input_animal_name"]);
     $_SESSION["admAnimalFilter"] = $aName;
     }
 
 if(isset($_SESSION["admAnimalFilter"])){
     $filter = $_SESSION["admAnimalFilter"];
-    $animalsByLimit = $animalManager->getAnimalsByNameAndLimit($startNr,$animalsPerPage, $filter);
-    $totalAnimals = $animalManager->getTotalAnimalsByName($filter);
+    $animalsByLimit = $animalShelter->GetAnimalHelper()->getAnimalsByNameAndLimit($startNr,$animalsPerPage, $filter);
+    $totalAnimals = $animalShelter->GetAnimalHelper()->getAllAnimalsByNameCount($filter);
     $total_pages=ceil( $totalAnimals / $animalsPerPage );
     }
 else{
-    $totalAnimals = $animalManager->getTotalAnimals();
+    $totalAnimals = $animalShelter->GetAnimalHelper()->getAllAnimalsCount();
     $total_pages = ceil($totalAnimals / $animalsPerPage);
-    $animalsByLimit = $animalManager->getAllAnimalsByLimit($startNr, $animalsPerPage);
+    $animalsByLimit = $animalShelter->GetAnimalHelper()->getAllAnimalsByLimit($startNr, $animalsPerPage);
 }
 
 if(isset($_GET['page'])){
@@ -84,7 +83,7 @@ if(isset($_GET['page'])){
                 <div class="animal-overview-list">
                     <?php 
                         foreach ($animalsByLimit as $animal) {
-                            $animalManager->showAnimalForAnimalOverview($animal);
+                            $animalShelter->showAnimalForAnimalOverview($animal);
                         }
                     ?>
                 </div>
@@ -150,7 +149,7 @@ if(isset($_GET['page'])){
                 ?>
                 </div>
             </div>
-            <form action="" method="post" class="animal-overview-form">
+            <form action="../handlers/animal-overview-handler.php" method="post" class="animal-overview-form">
                 <div class="input-animal-overview-wrapper">
                     <label for="input-animal-id">ID</label>
                     <input type="text" name="input-animal-id" id="input_selected_id">

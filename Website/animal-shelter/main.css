@@ -507,7 +507,342 @@ body {
   background: #212832;
   border: 2px solid #FBD46D;
 }
+/*Admin animal edit*/
+.admin-animal-edit-content{
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
 
+.animal-edit-wrapper{
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 90%;
+  height: 100%;
+  background-color: #212832;
+  border-radius: 20px;
+}
+
+.animal-edit-form{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: minmax(100px, auto) minmax(280px, auto) minmax(150px,auto) minmax(200px,auto) repeat(6, minmax(100px,auto));
+  grid-template-areas: "animalTypeRb"
+                        "animalImageArea"
+                        "animalImageInputArea"
+                        "animalDescArea"
+                        "animalNameInputArea"
+                        "animalBreedInputArea"
+                        "animalAgeInputArea"
+                        "animalSexInputArea"
+                        "animalSizeInputArea"
+                        "animalFormMainBtns";
+}
+
+.rbtns-typeArea{
+  grid-area: animalTypeRb;
+}
+
+.rbtns-genderArea{
+  grid-area: animalSexInputArea;
+}
+
+.animal-rbtns-wrapper{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: 'Audiowide', cursive;
+}
+
+.animal-rb-type-wrapper{
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #FBD46D;
+}
+
+.radio__input {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.radio__input input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: relative;
+  bottom: 18px;
+}
+
+.radio__control {
+  display:grid;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  border: 0.1em solid currentColor;
+  place-items: center;
+}
+
+.radio__input input + .radio__control::before {
+  content: "";
+  width: .5em;
+  height: .5em;
+  box-shadow: inset .5em .5em #FBD46D;
+  border-radius: 50%;
+  transition: 180ms transform ease-in-out;
+  transform: scale(0);    
+}
+
+.radio__input input:checked + .radio__control::before {
+  transform: scale(1);
+}
+
+.radio__input input:focus + .radio__control {
+  box-shadow: 0 0 0.15em 0.1em #fbd56d91;
+}
+
+.animal-image-wrapper{
+  grid-area: animalImageArea;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 100%;
+  height: 100%;
+}
+
+.animal-image-wrapper img{
+  margin-top: 15px;
+  height: 250px;
+  width: 250px;
+  border-radius: 20px;
+  border: 5px solid #FBD46D;
+}
+
+.animal-img-inputArea-wrapper{
+  grid-area: animalImageInputArea;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.animal-image-input-wrapper{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 70%;
+  width: 90%;
+  border-radius: 10px;
+  border: 5px solid #FBD46D;
+}
+
+.animal-image-input-wrapper input{
+  border-radius: 5px;
+  background-color: #212832;
+  color: #FBD46D;
+  border: 2px solid #FBD46D;
+  width: 60%;
+  height: 30px;
+  font-size: 1.1rem;
+}
+
+.animal-edit-btn{
+  width: 110px;
+  height: 30px;
+  color: #FBD46D;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  background: #212832;
+  border-radius: 8px;
+  font-family: 'Bangers', cursive;
+  cursor: pointer;
+  border: 2px solid #FBD46D;
+  transition: 0.3s;
+}
+
+.animal-edit-btn:hover{
+  background-color: #FBD46D;
+  color: #212832;
+}
+
+.animal-descriptionArea-wrapper{
+  grid-area: animalDescArea;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 200px;
+}
+
+.animal-description-input-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90%;
+}
+
+.animal-description-input-wrapper label{
+  font-size: 1.3rem;
+  color: #FBD46D;
+  font-family: 'Audiowide', cursive;
+}
+
+textarea#input_animal_edit_description{
+  resize: none;
+  height: 200px;
+  width: 90%;
+  border-radius: 10px;
+  background-color: #212832;
+  color: #FBD46D;
+  border: 2px solid #FBD46D;
+}
+
+.aNameArea-wrapper{
+  grid-area: animalNameInputArea;
+}
+
+.aBreedArea-wrapper{
+  grid-area: animalBreedInputArea;
+}
+
+.aAgeArea-wrapper{
+  grid-area: animalAgeInputArea;
+}
+
+.animal-sizeArea-wrapper{
+  grid-area: animalSizeInputArea;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 30px;
+}
+
+.animal-mainArea-btns-wrapper{
+  grid-area: animalFormMainBtns;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.animal-text-inputArea-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 90px;
+}
+
+.animal-text-input-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.animal-text-inputArea-wrapper label{
+  font-size: 1.3rem;
+  color: #FBD46D;
+  font-family: 'Audiowide', cursive;
+}
+
+.animal-text-inputArea-wrapper input{
+  border-radius: 5px;
+  background-color: #212832;
+  color: #FBD46D;
+  border: 2px solid #FBD46D;
+  width: 60%;
+  height: 30px;
+  font-size: 1.1rem;
+}
+
+.animal-sizeArea-wrapper label{
+  font-size: 1.3rem;
+  color: #FBD46D;
+  font-family: 'Audiowide', cursive;
+}
+
+.animal-size-input-container{
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.animal-size-input-container select{
+  border-radius:10px;
+  background-color: #FBD46D;
+  color: #212832;
+  padding: 12px;
+  width: 250px;
+  border: none;
+  font-size: 20px;
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+  cursor: pointer;
+}
+
+.animal-size-input-container::before {
+  content: "\f13a";
+  font-family: FontAwesome;
+  display: block;
+  position: relative;
+  width: 20%;
+  height: 49px;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color:#FBD46D;
+  background-color: #212832;
+  pointer-events: none;
+  border-radius: 0 10px 10px 0;
+  border: 1px solid #FBD46D;
+  bottom: 50px;
+  left:200px;
+}
+
+.animal-submit-btn{
+  border: 2px solid #FBD46D;
+  cursor: pointer;
+  width: 120px;
+  text-decoration: none;
+  color: #FBD46D;
+  font-size: 1.3rem;
+  background-color: #212832;
+  padding: 0.5rem 1.9rem;
+  border-radius: 8px;
+  font-family: "Bangers", cursive;
+  transition: 0.3s;
+}
+
+.animal-submit-btn:hover{
+  background-color: #FBD46D;
+  color: #212832;
+}
+  
 /* navigation */
 .main-header {
   grid-area: navigation;
@@ -1903,6 +2238,23 @@ border-radius: 20px 20px 0 0;
 }
 
 @media (min-width: 50rem) {
+  /*Admin animal edit*/
+  .animal-edit-wrapper{
+    min-width: 60%;
+    height: 90%;
+  }
+  .animal-edit-form{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 25% 25% 50%;
+    grid-template-rows: repeat(6, minmax(100px,auto));
+    grid-template-areas: "animalNameInputArea animalSexInputArea animalTypeRb"
+                          "animalBreedInputArea animalSizeInputArea animalImageArea"
+                          "animalAgeInputArea animalSizeInputArea animalImageArea"
+                          "animalDescArea animalDescArea animalImageArea"
+                          "animalDescArea animalDescArea animalImageInputArea"
+                          "animalFormMainBtns animalFormMainBtns animalFormMainBtns";
+  }
   /*Index content*/
   .main-index-content{
     

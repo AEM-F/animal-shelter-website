@@ -9,8 +9,8 @@ else{
     header("Location: index.php");
 }
 $_SESSION["userEditError"] = false;
-$userManager = new UserManager();
-$loggedUser= $userManager->getUserById($user_id);
+$animalShelter = AnimalShelter::GetInstance();
+$loggedUser= $animalShelter->GetUserHelper()->getUserById($user_id);
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +37,7 @@ $loggedUser= $userManager->getUserById($user_id);
                 <div class="user-card-body">
                     <p class="user-card-textinfo">
                         <?php
-                        $userManager->showUser($loggedUser);
+                        $animalShelter->showUser($loggedUser);
                         ?>
                     </p>
                     <a href="account-edit.php" class="user-edit-btn"><i class="fas fa-user-edit"></i>Edit info</a>

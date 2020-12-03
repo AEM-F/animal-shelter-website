@@ -1,8 +1,7 @@
 <?php
 session_start();
 include 'includes/class-autoloader.inc.php';
-$animalManager = new AnimalManager();
-$userManager = new UserManager();
+$animalShelter = AnimalShelter::GetInstance();
 $_SESSION["logInError"]=false;
 $_SESSION["signupError"]=false;
 ?>
@@ -48,8 +47,8 @@ $_SESSION["signupError"]=false;
 <div class="new-pet">
     <h1 class="new-pet-title">A new member from our family managed to get a new home</h1>
       <?php 
-      $lastAddedAnimal = $animalManager->getAnimalById($animalManager->getTotalAnimals());
-      $animalManager->showLastAddedAnimal($lastAddedAnimal);
+      $lastAddedAnimal = $animalShelter->GetAnimalHelper()->getAnimalById($animalShelter->GetAnimalHelper()->getAllAnimalsCount());
+      $animalShelter->showLastAddedAnimal($lastAddedAnimal);
       ?>
       
 </div>
@@ -57,12 +56,12 @@ $_SESSION["signupError"]=false;
     <h1 class="f-pet-title">Check out some of our members!</h1>
     <div class="f-pet-cards">
           <?php
-          $animal1 = $animalManager->getAnimalById(1);
-          $animal2 = $animalManager->getAnimalById(2);
-          $animal3 = $animalManager->getAnimalById(3);
-          $animalManager->showAnimal($animal1);
-          $animalManager->showAnimal($animal2);
-          $animalManager->showAnimal($animal3);
+          $animal1 = $animalShelter->GetAnimalHelper()->getAnimalById(1);
+          $animal2 = $animalShelter->GetAnimalHelper()->getAnimalById(2);
+          $animal3 = $animalShelter->GetAnimalHelper()->getAnimalById(3);
+          $animalShelter->showAnimal($animal1);
+          $animalShelter->showAnimal($animal2);
+          $animalShelter->showAnimal($animal3);
           ?>
     </div>
 </div>

@@ -12,9 +12,10 @@ class AnimalDh{
         $results = $this->database->connect()->query($sql);
 
         $animals = [];
-        $obj;
+        $obj = null;
         foreach ($results as $row) {
-            $obj = new Animal($row ["animal_id"], $row ["animal_name"], $row ["animal_age"], $row ["animal_breed"], $row ["animal_sex"], $row ["animal_size"], $row ["animal_description"], $row ["animal_image_link"], $row ["animal_type"]);
+            $obj = $this->instantiate($row);
+            
             $animals[] = $obj;
         }
         return $animals;
@@ -25,9 +26,9 @@ class AnimalDh{
         $results=$this->database->connect()->prepare($sql);
         $results->execute(['id' => $id]);
 
-        $obj;
+        $obj = null;
         foreach ($results as $row) {
-            $obj = new Animal($row ["animal_id"], $row ["animal_name"], $row ["animal_age"], $row ["animal_breed"], $row ["animal_sex"], $row ["animal_size"], $row ["animal_description"], $row ["animal_image_link"], $row ["animal_type"]);
+            $obj = $this->instantiate($row);
         }
         return $obj;
     }
@@ -48,23 +49,23 @@ class AnimalDh{
         $sql = "SELECT * FROM website_shelter_animals ORDER BY animal_id desc LIMIT {$startNr}, {$nrPerPage}";
         $results = $this->database->connect()->query($sql);
 
-        $obj;
+        $obj = null;
         $animals = [];
         foreach ($results as $row) {
-            $obj = new Animal($row ["animal_id"], $row ["animal_name"], $row ["animal_age"], $row ["animal_breed"], $row ["animal_sex"], $row ["animal_size"], $row ["animal_description"], $row ["animal_image_link"], $row ["animal_type"]);
+            $obj = $this->instantiate($row);
             $animals[] = $obj;
         }
         return $animals;
     }
 
     public function getTypeAnimalsByLimit($startNr,$nrPerPage,$type){
-        $sql = "SELECT * FROM website_shelter_animals WHERE animal_type=\"{$type}\" ORDER BY animal_id DESC LIMIT {$startNr}, {$nrPerPage}";
+        $sql = "SELECT * FROM website_shelter_animals WHERE animal_family=\"{$type}\" ORDER BY animal_id DESC LIMIT {$startNr}, {$nrPerPage}";
         $results = $this->database->connect()->query($sql);
 
-        $obj;
+        $obj = null;
         $animals = [];
         foreach ($results as $row) {
-            $obj = new Animal($row ["animal_id"], $row ["animal_name"], $row ["animal_age"], $row ["animal_breed"], $row ["animal_sex"], $row ["animal_size"], $row ["animal_description"], $row ["animal_image_link"], $row ["animal_type"]);
+            $obj = $this->instantiate($row);
             $animals[] = $obj;
         }
         return $animals;
@@ -74,13 +75,37 @@ class AnimalDh{
         $sql = "SELECT * FROM website_shelter_animals WHERE animal_name=\"{$name}\" ORDER BY animal_id DESC LIMIT {$startNr}, {$nrPerPage}";
         $results = $this->database->connect()->query($sql);
 
-        $obj;
+        $obj = null;
         $animals = [];
         foreach ($results as $row) {
-            $obj = new Animal($row ["animal_id"], $row ["animal_name"], $row ["animal_age"], $row ["animal_breed"], $row ["animal_sex"], $row ["animal_size"], $row ["animal_description"], $row ["animal_image_link"], $row ["animal_type"]);
+            $obj = $this->instantiate($row);
             $animals[] = $obj;
         }
         return $animals;
+    }
+
+    public function removeAnimalById($id){
+        $sql="DELETE FROM website_shelter_animals WHERE animal_id=:id";
+        $result= $this->database->connect()->prepare($sql);
+        $result->bindValue(":id", $id);
+        $result->execute();
+    }
+
+    private function instantiate($row){
+        $obj = null;
+        if($row["animal_family"] == "Canine"){
+            $obj = new Dog($row ["animal_name"], $row ["animal_age"], $row ["animal_sex"], $row ["animal_size"], $row ["animal_description"], $row ["animal_image_link"], $row ["animal_species"], $row["animal_family"], $row ["animal_breed"]);
+            $obj->SetId($row["animal_id"]);
+        }
+        else if($row["animal_family"] == "Feline"){
+            $obj = new Cat($row ["animal_name"], $row ["animal_age"], $row ["animal_sex"], $row ["animal_size"], $row ["animal_description"], $row ["animal_image_link"], $row ["animal_species"], $row["animal_family"], $row ["animal_breed"]);
+            $obj->SetId($row["animal_id"]);
+        }
+        elseif($row["animal_family"] == "Avian"){
+            $obj = new Bird($row ["animal_name"], $row ["animal_age"], $row ["animal_sex"], $row ["animal_size"], $row ["animal_description"], $row ["animal_image_link"], $row ["animal_species"], $row["animal_family"]);
+            $obj->SetId($row["animal_id"]);
+        }
+        return $obj;
     }
 }
 ?>

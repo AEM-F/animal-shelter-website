@@ -1,7 +1,7 @@
 <?php   
 include 'includes/class-autoloader.inc.php';
 session_start();
-$userManager = new UserManager();
+$animalShelter = AnimalShelter::GetInstance();
 ?>
 
 <!DOCTYPE html>

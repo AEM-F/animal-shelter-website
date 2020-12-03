@@ -14,14 +14,14 @@
                 <?php
                 if(isset($_SESSION["userId"])){
                     echo "<li class=\"main-nav_item main-nav_item--user\">
-                    <p>" . "Hello, " . $userManager->getUserById($_SESSION["userId"])->GetName() . "</p>
+                    <p>" . "Hello, " . $animalShelter->GetUserHelper()->getUserById($_SESSION["userId"])->GetName() . "</p>
                     </li>";
 
                     echo "<li class=\"main-nav_item main-nav_item--cta\">
                     <a href=\"account-overview.php\"><i class=\"fas fa-user-circle\"></i>Account</a>
                     </li>";
 
-                    if($userManager->getUserById($_SESSION["userId"])->GetRole() == "Admin"){
+                    if($animalShelter->GetUserHelper()->getUserById($_SESSION["userId"])->GetRole() == "Admin"){
                         echo "<li class=\"main-nav_item main-nav_item--cta main-nav-item--admin\">
                     <a href=\"admin/animal-overview.php\" title=\"Travel to admin panel\"><i class=\"fas fa-user-shield\"></i></a>
                     </li>";
@@ -57,7 +57,7 @@
         <ul class="mobile-nav_items">
             <?php 
             if(isset($_SESSION["userId"])){
-                if($userManager->getUserById($_SESSION["userId"])->GetRole() == "Admin"){
+                if($animalShelter->GetUserHelper()->getUserById($_SESSION["userId"])->GetRole() == "Admin"){
                     echo "<li class=\"mobile-nav_item mobile-nav_item--cta\">
                 <a href=\"admin/animal-overview.php\" title=\"Travel to admin panel\"><i class=\"fas fa-user-shield\"></i>Admin</a>
                 </li>";

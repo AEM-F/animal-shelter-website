@@ -16,8 +16,8 @@ if(isset($_SESSION["userEditError"])){
     }
 }
 
-$userManager = new UserManager();
-$loggedUser= $userManager->getUserById($user_id);
+$animalShelter = AnimalShelter::GetInstance();
+$loggedUser= $animalShelter->GetUserHelper()->getUserById($user_id);
 ?>
     <!DOCTYPE html>
 <html lang="en">

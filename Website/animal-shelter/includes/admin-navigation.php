@@ -12,7 +12,7 @@
                 <?php
                 if(isset($_SESSION["userId"])){
                     echo "<li class=\"main-nav_item main-nav_item--user main-nav_item--user-admin\">
-                    <p>" . "Hello, " . $userManager->getUserById($_SESSION["userId"])->GetName() . "</p>
+                    <p>" . "Hello, " . $animalShelter->GetUserHelper()->getUserById($_SESSION["userId"])->GetName() . "</p>
                     </li>";
                 }
                 ?>
@@ -35,7 +35,7 @@
                     <a class="slider-link-nav_item" href="animal-overview.php"><i class="fas fa-paw"></i>Animals overview</a>
                 </div>
                 <div class="slider-nav_item_sub">
-                    <a class="slider-link-nav_item" href="#"><i class="fas fa-plus"></i>Add animal</a>
+                    <a class="slider-link-nav_item" href="admin-adminal-add.php"><i class="fas fa-plus"></i>Add animal</a>
                 </div>
             </div>
             

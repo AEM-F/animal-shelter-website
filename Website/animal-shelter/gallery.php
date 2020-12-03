@@ -1,8 +1,7 @@
 <?php
 include 'includes/class-autoloader.inc.php';
 session_start();
-$animalManager = new AnimalManager();
-$userManager = new UserManager();
+$animalShelter = AnimalShelter::GetInstance();
 $totalAnimals = 0;
 // page is the current page, if there's nothing set, default is page 1
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -30,32 +29,32 @@ if(isset(($_GET["bird_filter"]))){
 if(isset($_SESSION["filter"])){
     $filter = $_SESSION["filter"];
     if($filter == "&all_filter="){
-    $animalsByLimit = $animalManager->getAllAnimalsByLimit($startNr, $animalsPerPage);
-    $totalAnimals = $animalManager->getTotalAnimals();
+    $animalsByLimit = $animalShelter->GetAnimalHelper()->getAllAnimalsByLimit($startNr, $animalsPerPage);
+    $totalAnimals = $animalShelter->GetAnimalHelper()->getAllAnimalsCount();
     $total_pages = ceil($totalAnimals / $animalsPerPage);
     }
 
     if($filter == "&dog_filter="){
-        $animalsByLimit = $animalManager->getTypeAnimalsByLimit($startNr,$animalsPerPage, "DOG");
-        $totalAnimals = count($animalManager->getAnimalsByType($animalManager->getAllAnimals(), "DOG"));
+        $animalsByLimit = $animalShelter->GetAnimalHelper()->getTypeAnimalsByLimit($startNr,$animalsPerPage, "Canine");
+        $totalAnimals = count($animalShelter->getAnimalsByType($animalShelter->GetAnimalHelper()->getAllAnimals(), "Canine"));
         $total_pages=ceil( $totalAnimals / $animalsPerPage );
     }
     if($filter == "&cat_filter="){
-        $animalsByLimit = $animalManager->getTypeAnimalsByLimit($startNr,$animalsPerPage, "CAT");
-        $totalAnimals = count($animalManager->getAnimalsByType($animalManager->getAllAnimals(), "CAT"));
+        $animalsByLimit = $animalShelter->GetAnimalHelper()->getTypeAnimalsByLimit($startNr,$animalsPerPage, "Feline");
+        $totalAnimals = count($animalShelter->getAnimalsByType($animalShelter->GetAnimalHelper()->getAllAnimals(), "Feline"));
         $total_pages=ceil($totalAnimals / $animalsPerPage );
     }
     if($filter == "&bird_filter="){
-        $animalsByLimit = $animalManager->getTypeAnimalsByLimit($startNr,$animalsPerPage, "BIRD");
-        $totalAnimals = count($animalManager->getAnimalsByType($animalManager->getAllAnimals(), "BIRD"));
+        $animalsByLimit = $animalShelter->GetAnimalHelper()->getTypeAnimalsByLimit($startNr,$animalsPerPage, "Avian");
+        $totalAnimals = count($animalShelter->getAnimalsByType($animalShelter->GetAnimalHelper()->getAllAnimals(), "Avian"));
         $total_pages=ceil($totalAnimals / $animalsPerPage );
     }
         
 }
 else{
-    $totalAnimals = $animalManager->getTotalAnimals();
+    $totalAnimals = $animalShelter->GetAnimalHelper()->getAllAnimalsCount();
     $total_pages = ceil($totalAnimals / $animalsPerPage);
-    $animalsByLimit = $animalManager->getAllAnimalsByLimit($startNr, $animalsPerPage);
+    $animalsByLimit = $animalShelter->GetAnimalHelper()->getAllAnimalsByLimit($startNr, $animalsPerPage);
 }
 
 
@@ -129,7 +128,7 @@ if(isset($_GET['page'])){
             <div class="pet-gallery-cards">
               <?php
               foreach($animalsByLimit as $animal){
-                  $animalManager->showAnimalForGallery($animal);
+                  $animalShelter->showAnimalForGallery($animal);
               }
               ?>
             </div>

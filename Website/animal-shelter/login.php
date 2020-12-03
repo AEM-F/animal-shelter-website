@@ -1,6 +1,7 @@
 <?php
 include 'includes/class-autoloader.inc.php';
 session_start();
+$animalShelter = AnimalShelter::GetInstance();
 $errorVal = false;
 if(isset($_SESSION["logInError"])){
 $errorVal = $_SESSION["logInError"];
