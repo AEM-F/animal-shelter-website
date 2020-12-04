@@ -25,8 +25,15 @@ if(isset($_POST["user-update-btn"]) && $_POST["user-update-btn"] == "Submit"){
         if(strlen($inputName) < 50 || strlen($inputLastName) < 50 || strlen($inputEmail) < 50 || strlen($_POST["input-edit-password"]) < 50){
             if($inputPassword == $inputcPassword){
                 if($inputEmail == $loggedUser->GetEmail()){
-                        $user = new User($inputName, $inputLastName, $inputEmail, $inputPassword, $loggedUser->GetRole());
+                    if($loggedUser->GetRole()== "Admin"){
+                        $user = new Admin($inputName, $inputLastName, $inputEmail, $inputPassword, $loggedUser->GetRole());
                         $user->SetId($loggedUser->GetId());
+                    }
+                    elseif($loggedUser->GetRole()== "Member"){
+                        $user = new Member($inputName, $inputLastName, $inputEmail, $inputPassword, $loggedUser->GetRole());
+                        $user->SetId($loggedUser->GetId());
+                    }
+                        
                         $animalShelter->GetUserHelper()->updateUser($user);
                         $_SESSION["userEditError"] = false;
                         //echo "success";
@@ -38,8 +45,14 @@ if(isset($_POST["user-update-btn"]) && $_POST["user-update-btn"] == "Submit"){
                         header("Location: ../account-edit.php");
                     }
                     else{
-                        $user = new User($inputName, $inputLastName, $inputEmail, $inputPassword, $loggedUser->GetRole());
-                        $user->SetId($loggedUser->GetId());
+                        if($loggedUser->GetRole()== "Admin"){
+                            $user = new Admin($inputName, $inputLastName, $inputEmail, $inputPassword, $loggedUser->GetRole());
+                            $user->SetId($loggedUser->GetId());
+                        }
+                        elseif($loggedUser->GetRole()== "Member"){
+                            $user = new Member($inputName, $inputLastName, $inputEmail, $inputPassword, $loggedUser->GetRole());
+                            $user->SetId($loggedUser->GetId());
+                        }
                         $isUpdated = $animalShelter->GetUserHelper()->updateUser($user);
                         if($isUpdated){
                             $_SESSION["userEditError"] = false;

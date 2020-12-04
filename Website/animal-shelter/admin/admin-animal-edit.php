@@ -54,21 +54,21 @@ else{
                                 <div class="animal-rb-type-wrapper">
                                     <label for="rb_animal_type_dog">Dog</label>
                                     <span class="radio__input">
-                                        <input type="radio" id="rb_animal_type_dog" name="animal-edit-type" value="DOG" checked>
+                                        <input type="radio" id="rb_animal_type_dog" name="animal-edit-type" value="Canine" checked>
                                         <span class="radio__control"></span>
                                     </span>
                                 </div>
                                 <div class="animal-rb-type-wrapper">
                                     <label for="rb_animal_type_cat">Cat</label>
                                     <span class="radio__input">
-                                        <input type="radio" id="rb_animal_type_cat" name="animal-edit-type" value="CAT">
+                                        <input type="radio" id="rb_animal_type_cat" name="animal-edit-type" value="Feline">
                                         <span class="radio__control"></span>
                                     </span>
                                 </div>
                                 <div class="animal-rb-type-wrapper">
                                     <label for="rb_animal_type_bird">Bird</label>
                                     <span class="radio__input">
-                                        <input type="radio" id="rb_animal_type_bird" name="animal-edit-type" value="BIRD">
+                                        <input type="radio" id="rb_animal_type_bird" name="animal-edit-type" value="Avian">
                                         <span class="radio__control"></span>
                                     </span>
                                 </div>

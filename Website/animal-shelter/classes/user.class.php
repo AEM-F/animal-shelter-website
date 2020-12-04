@@ -1,14 +1,14 @@
 <?php
-class User{
+abstract class User{
 
-    private $id;
-    private $name;
-    private $lastName;
-    private $email;
-    private $password;
-    private $role;
+    protected $id;
+    protected $name;
+    protected $lastName;
+    protected $email;
+    protected $password;
+    protected $role;
 
-    function __construct($name, $lastName, $email, $password, $role) {
+    public function __construct($name, $lastName, $email, $password, $role) {
         $this->name = $name;
         $this->lastName = $lastName;
         $this->email = $email;

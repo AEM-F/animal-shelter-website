@@ -15,8 +15,7 @@ class UserDh{
 
         $obj = null;
         foreach ($results as $row) {
-            $obj = new User($row ["Name"], $row ["LastName"], $row ["Email"], $row ["Password"], $row["Role"]);
-            $obj->SetId($row ["Id"]);
+            $obj = $this->instantiate($row);
         }
         return $obj;
     }
@@ -28,8 +27,7 @@ class UserDh{
 
         $obj = null;
         foreach ($results as $row) {
-            $obj = new User($row ["Name"], $row ["LastName"], $row ["Email"], $row ["Password"], $row["Role"]);
-            $obj->SetId($row ["Id"]);
+            $obj = $this->instantiate($row);
         }
         return $obj;
     }
@@ -94,6 +92,19 @@ class UserDh{
         $results->bindValue(':upassword', $user->GetPassword());
         $results->bindValue(':urole', $user->GetRole());
         $results->execute();
+    }
+
+    private function instantiate($row){
+        $obj = null;
+        if($row['Role'] == "Member"){
+            $obj = new Member($row ["Name"], $row ["LastName"], $row ["Email"], $row ["Password"], $row["Role"]);
+            $obj->SetId($row ["Id"]);
+        }
+        elseif($row["Role"] == "Admin"){
+            $obj = new Admin($row ["Name"], $row ["LastName"], $row ["Email"], $row ["Password"], $row["Role"]);
+            $obj->SetId($row ["Id"]);
+        }
+        return $obj;
     }
 
 }

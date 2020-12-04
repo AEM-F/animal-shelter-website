@@ -53,7 +53,7 @@ elseif(isset($_POST['signUpButton'])){
         if(strlen($inputName) < 50 || strlen($inputLastName) < 50 || strlen($inputEmail) < 50 || strlen($_POST["input-edit-password"]) < 50){
             if($inputPassword == $inputcPassword){
                 if(!$animalShelter->GetUserHelper()->validateEmail($inputEmail)){
-                    $animalShelter->GetUserHelper()->insertUser( new User($inputName, $inputLastName, $inputEmail, $inputPassword, "Member"));
+                    $animalShelter->GetUserHelper()->insertUser( new Member($inputName, $inputLastName, $inputEmail, $inputPassword, "Member"));
                     $_SESSION["userId"] = $animalShelter->GetUserHelper()->getUserByEmail($inputEmail)->GetId();
                     $_SESSION["signupError"] = false;
                     header("Location: ../index.php");
