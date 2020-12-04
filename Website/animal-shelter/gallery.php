@@ -128,7 +128,7 @@ if(isset($_GET['page'])){
             <div class="pet-gallery-cards">
               <?php
               foreach($animalsByLimit as $animal){
-                  $animalShelter->showAnimalForGallery($animal);
+                  $animalShelter->GetAnimalView()->showAnimalForGallery($animal);
               }
               ?>
             </div>

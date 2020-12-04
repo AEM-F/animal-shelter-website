@@ -97,7 +97,7 @@ class AnimalDh{
             $obj = new Dog($row ["animal_name"], $row ["animal_age"], $row ["animal_sex"], $row ["animal_size"], $row ["animal_description"], $row ["animal_image_link"], $row ["animal_species"], $row["animal_family"], $row ["animal_breed"]);
             $obj->SetId($row["animal_id"]);
         }
-        else if($row["animal_family"] == "Feline"){
+        elseif($row["animal_family"] == "Feline"){
             $obj = new Cat($row ["animal_name"], $row ["animal_age"], $row ["animal_sex"], $row ["animal_size"], $row ["animal_description"], $row ["animal_image_link"], $row ["animal_species"], $row["animal_family"], $row ["animal_breed"]);
             $obj->SetId($row["animal_id"]);
         }

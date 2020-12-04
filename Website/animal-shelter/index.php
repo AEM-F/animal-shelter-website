@@ -48,7 +48,7 @@ $_SESSION["signupError"]=false;
     <h1 class="new-pet-title">A new member from our family managed to get a new home</h1>
       <?php 
       $lastAddedAnimal = $animalShelter->GetAnimalHelper()->getAnimalById($animalShelter->GetAnimalHelper()->getAllAnimalsCount());
-      $animalShelter->showLastAddedAnimal($lastAddedAnimal);
+      $animalShelter->GetAnimalView()->showLastAddedAnimal($lastAddedAnimal);
       ?>
       
 </div>
@@ -56,12 +56,11 @@ $_SESSION["signupError"]=false;
     <h1 class="f-pet-title">Check out some of our members!</h1>
     <div class="f-pet-cards">
           <?php
-          $animal1 = $animalShelter->GetAnimalHelper()->getAnimalById(1);
-          $animal2 = $animalShelter->GetAnimalHelper()->getAnimalById(2);
-          $animal3 = $animalShelter->GetAnimalHelper()->getAnimalById(3);
-          $animalShelter->showAnimal($animal1);
-          $animalShelter->showAnimal($animal2);
-          $animalShelter->showAnimal($animal3);
+          $animals = $animalShelter->GetAnimalHelper()->getAllAnimalsByLimit(0, 3);
+          foreach ($animals as $animal){
+                $animalShelter->GetAnimalView()->showAnimal($animal);
+          }
+          
           ?>
     </div>
 </div>

@@ -83,7 +83,7 @@ if(isset($_GET['page'])){
                 <div class="animal-overview-list">
                     <?php 
                         foreach ($animalsByLimit as $animal) {
-                            $animalShelter->showAnimalForAnimalOverview($animal);
+                            $animalShelter->GetAnimalView()->showAnimalForAnimalOverview($animal);
                         }
                     ?>
                 </div>
