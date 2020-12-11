@@ -91,6 +91,35 @@ class AnimalDh{
         $result->execute();
     }
 
+    public function updateAnimal($animal){
+        $animalBreed = "";
+        $animalSpecies = "";
+        if($animal->GetFamily() == "Canine" || $animal->GetFamily() == "Feline"){
+            $animalBreed = $animal->GetBreed();
+        }
+        elseif($animal->GetFamily() == "Avian"){
+            $animalSpecies = $animal->GetSpecies();
+        }
+        $sql="UPDATE `website_shelter_animals` SET `animal_name`=:aName, `animal_age`=:aAge, `animal_breed`=:aBreed, `animal_size`=:aSize, `animal_description`=:aDescription, `animal_image_link`=:aLink, `animal_species`=:aSpecies, `animal_family`=:aFamily WHERE `animal_id`=:aId";
+        try{
+        $results=$this->database->connect()->prepare($sql);
+        $results->bindValue(':aId', $animal->GetId());
+        $results->bindValue(':aName', $animal->GetName());
+        $results->bindValue(':aAge', $animal->GetAge());
+        $results->bindValue(':aBreed', $animalBreed);
+        $results->bindValue(':aSize', $animal->GetSize());
+        $results->bindValue(':aDescription', $animal->GetDescription());
+        $results->bindValue(':aLink', $animal->GetImgLink());
+        $results->bindValue(':aSpecies', $animalSpecies);
+        $results->bindValue(':aFamily', $animal->GetFamily());
+        $results->execute();
+        }
+        catch(Exception $e){
+            return false;
+        }
+        return true;
+    }
+
     private function instantiate($row){
         $obj = null;
         if($row["animal_family"] == "Canine"){

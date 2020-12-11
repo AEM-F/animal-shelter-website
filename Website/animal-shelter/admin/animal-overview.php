@@ -50,6 +50,10 @@ if(isset($_GET['page'])){
     }
 }
 
+if(isset($_SESSION["animalEditError"]) && $_SESSION["animalEditError"] == true){
+    $_SESSION["animalEditError"]=false;
+}
+
 ?>
 
 <!DOCTYPE html>

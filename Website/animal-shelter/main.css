@@ -547,6 +547,12 @@ body {
                         "animalFormMainBtns";
 }
 
+.animal-id-wrapper{
+  opacity: 0;
+  position: absolute;
+  bottom:700px;
+}
+
 .rbtns-typeArea{
   grid-area: animalTypeRb;
 }
@@ -617,8 +623,9 @@ body {
 .animal-image-wrapper{
   grid-area: animalImageArea;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-self: center;
+  align-items: center;
   width: 100%;
   height: 100%;
 }
@@ -673,6 +680,8 @@ body {
   cursor: pointer;
   border: 2px solid #FBD46D;
   transition: 0.3s;
+  padding-top: 0.2rem;
+  text-align: center;
 }
 
 .animal-edit-btn:hover{
@@ -720,6 +729,10 @@ textarea#input_animal_edit_description{
 }
 
 .aBreedArea-wrapper{
+  grid-area: animalBreedInputArea;
+}
+
+.aSpeciesArea-wrapper{
   grid-area: animalBreedInputArea;
 }
 
@@ -841,6 +854,20 @@ textarea#input_animal_edit_description{
 .animal-submit-btn:hover{
   background-color: #FBD46D;
   color: #212832;
+}
+.animal-error{
+  display: none;
+  margin-top: 4px;
+  align-self: center;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  border-radius: 5px;
+  width: 85%;
+  background: rgba(238, 37, 37, 0.849);
+  color: #e0e0e0;
+  box-shadow: 0 1px 6px 0 #f73434;
 }
   
 /* navigation */
@@ -2214,6 +2241,10 @@ border-radius: 20px 20px 0 0;
     display: block !important;
 }
 
+.hide{
+  display: none;
+}
+
 /* Media queries */
 
 @media (min-width: 75rem){
@@ -2513,4 +2544,5 @@ border-radius: 20px 20px 0 0;
   0% {opacity: 0;}
   100% {opacity: 1;}
 } 
+
 

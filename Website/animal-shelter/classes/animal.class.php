@@ -25,14 +25,12 @@ abstract class Animal {
     public function SetId($id){$this->id = $id;}
     public function GetName() { return $this->name; }
     public function GetAge() { return $this->age; }
-   // public function GetBreed() { return $this->breed; }
     public function GetSex() { return $this->sex; }
     public function GetSize() { return $this->size; }
     public function GetDescription() { return $this->description; }
     public function GetImgLink() { return $this->imgLink; }
     public function GetSpecies() { return $this->species; }
     public function GetFamily() { return $this->family; }
-    //public function GetAnimalShortDescription(){ return "Sex: " . $this->GetSex() . "|" . "Breed: ". $this->GetBreed() . "|"  . "Size: ". $this->GetSize() . "|" . "Age: ". $this->GetAge();}
     abstract public function GetAnimalShortDescription();
 }
 ?>

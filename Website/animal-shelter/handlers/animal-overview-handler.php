@@ -12,21 +12,23 @@ if(isset($_SESSION["userId"])){
 else{
     header("Location: ../index.php");
 }
-$animalId=0;
-if(isset($_POST["input-animal-id"])){
-    $animalId = $animalShelter->sanitizeString($_POST["input-animal-id"]); 
-}
-else{
-    header("Location: ../admin/animal-overview.php?page=1");
-}
+$animalId=null;
 
 if (isset($_POST["animal-edit-btn"])) {
-    $url="Location: ../admin/admin-animal-edit.php" . "?aId=" . $animalId;
-    header($url);
+    if(isset($_POST["input-animal-id"]) && $_POST["input-animal-id"] != ""){
+        $animalId = $animalShelter->sanitizeString($_POST["input-animal-id"]); 
+        $url="Location: ../admin/admin-animal-edit.php" . "?aId=" . $animalId;
+        header($url);
+    }
+    else{
+        header("Location: ../admin/animal-overview.php?page=1");
+    }
+    
 }
 
 if(isset($_POST["animal-add-btn"])){
     header("Location: ../admin/admin-animal-add.php");
+   
 }
 
 if(isset($_POST["animal-remove-btn"])){
