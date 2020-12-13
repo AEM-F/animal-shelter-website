@@ -145,20 +145,24 @@ class AnimalDh{
     }
 
     private function instantiate($row){
-        //maybe work with a switch case
         $obj = null;
-        if($row["animal_family"] == "Canine"){
-            $obj = new Dog($row ["animal_name"], $row ["animal_age"], $row ["animal_sex"], $row ["animal_size"], $row ["animal_description"], $row ["animal_image_link"], $row ["animal_species"], $row["animal_family"], $row ["animal_breed"]);
-            $obj->SetId($row["animal_id"]);
+        switch ($row["animal_family"]) {
+            case 'Canine':
+                $obj = new Dog($row ["animal_name"], $row ["animal_age"], $row ["animal_sex"], $row ["animal_size"], $row ["animal_description"], $row ["animal_image_link"], $row ["animal_species"], $row["animal_family"], $row ["animal_breed"]);
+                $obj->SetId($row["animal_id"]);
+                break;
+            
+            case 'Feline':
+                $obj = new Cat($row ["animal_name"], $row ["animal_age"], $row ["animal_sex"], $row ["animal_size"], $row ["animal_description"], $row ["animal_image_link"], $row ["animal_species"], $row["animal_family"], $row ["animal_breed"]);
+                $obj->SetId($row["animal_id"]);
+                break;
+
+            case 'Avian':
+                $obj = new Bird($row ["animal_name"], $row ["animal_age"], $row ["animal_sex"], $row ["animal_size"], $row ["animal_description"], $row ["animal_image_link"], $row ["animal_species"], $row["animal_family"]);
+                $obj->SetId($row["animal_id"]);
+                break; 
         }
-        elseif($row["animal_family"] == "Feline"){
-            $obj = new Cat($row ["animal_name"], $row ["animal_age"], $row ["animal_sex"], $row ["animal_size"], $row ["animal_description"], $row ["animal_image_link"], $row ["animal_species"], $row["animal_family"], $row ["animal_breed"]);
-            $obj->SetId($row["animal_id"]);
-        }
-        elseif($row["animal_family"] == "Avian"){
-            $obj = new Bird($row ["animal_name"], $row ["animal_age"], $row ["animal_sex"], $row ["animal_size"], $row ["animal_description"], $row ["animal_image_link"], $row ["animal_species"], $row["animal_family"]);
-            $obj->SetId($row["animal_id"]);
-        }
+     
         return $obj;
     }
 }

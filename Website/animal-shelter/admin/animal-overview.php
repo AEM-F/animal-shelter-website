@@ -83,7 +83,7 @@ if(isset($_SESSION["animalAddError"]) && $_SESSION["animalAddError"] == true){
         <?php include '../includes/admin-footer.php'; ?>
         <script src="../js/shared-admin.js"></script>
         <script src="../js/animal-select.js"></script>
-        <script src="../js/animal-show-all-ajax.js"></script>
-        <script src="../js/animal-search-ajax.js"></script>
+        <script src="../js/ajax/animal-show-all-ajax.js"></script>
+        <script src="../js/ajax/animal-search-ajax.js"></script>
     </body>
 </html>

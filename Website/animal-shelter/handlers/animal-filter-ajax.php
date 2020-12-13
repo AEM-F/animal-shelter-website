@@ -3,32 +3,16 @@ include '../includes/class-autoloader.inc.php';
 session_start();
 $animalShelter = AnimalShelter::GetInstance();
 
-if(isset($_POST["animal_page"]) && $_POST["animal_page"] != ""){
+if(isset($_POST["animal_page"]) && $_POST["animal_page"] != "" && isset($_POST["animal_type"])){
     $page = $_POST["animal_page"];
-    $animalsPerPage = 5;
+    $animalsPerPage = 10;
     if(is_numeric($page)){
-        switch ($_POST["animal_display"]) {
-            case 'overview':
-                $animalsPerPage = 5;
-                break;
-            
-            case 'gallery':
-                $animalsPerPage = 10;
-                break;
-        }
-        
         $startNr = ($animalsPerPage * $page) - $animalsPerPage;
-        $totalAnimals = $animalShelter->GetAnimalHelper()->getAllAnimalsCount();
+        $totalAnimals = count($animalShelter->getAnimalsByType($animalShelter->GetAnimalHelper()->getAllAnimals(), $_POST["animal_type"]));
             if($totalAnimals > 0){
-                $animalsByLimit = $animalShelter->GetAnimalHelper()->getAllAnimalsByLimit($startNr, $animalsPerPage);
+                $animalsByLimit = $animalShelter->GetAnimalHelper()->getTypeAnimalsByLimit($startNr, $animalsPerPage, $_POST["animal_type"]);
                 $total_pages=ceil( $totalAnimals / $animalsPerPage );
                 switch ($_POST["animal_display"]) {
-                    case 'overview':
-                        foreach ($animalsByLimit as $animal) {
-                            $animalShelter->GetAnimalView()->showAnimalForAnimalOverview($animal);
-                        }
-                        break;
-                    
                     case 'gallery':
                         foreach ($animalsByLimit as $animal) {
                             $animalShelter->GetAnimalView()->showAnimalForGallery($animal);
