@@ -32,6 +32,10 @@ if(isset($_POST["animal-add-btn"])){
 }
 
 if(isset($_POST["animal-remove-btn"])){
-    $animalShelter->GetAnimalHelper()->removeAnimalById($animalId);
+    if(isset($_POST["input-animal-id"]) && $_POST["input-animal-id"] != ""){
+        $animalId = $animalShelter->sanitizeString($_POST["input-animal-id"]); 
+        $animalShelter->GetAnimalHelper()->removeAnimalById($animalId);
+    }
     header("Location: ../admin/animal-overview.php?page=1");
+    
 }

@@ -35,7 +35,7 @@
                     <a class="slider-link-nav_item" href="animal-overview.php"><i class="fas fa-paw"></i>Animals overview</a>
                 </div>
                 <div class="slider-nav_item_sub">
-                    <a class="slider-link-nav_item" href="admin-adminal-add.php"><i class="fas fa-plus"></i>Add animal</a>
+                    <a class="slider-link-nav_item" href="admin-animal-add.php"><i class="fas fa-plus"></i>Add animal</a>
                 </div>
             </div>
             

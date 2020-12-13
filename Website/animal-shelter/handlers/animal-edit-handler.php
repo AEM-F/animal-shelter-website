@@ -22,7 +22,7 @@ if($_POST["animal-edit-type"] != "" && $_POST["animal-edit-size"] != "" && $_POS
     if(is_numeric($inputId)){
         if(strlen($inputType) < 20 || strlen($inputImgLink) < 200 || strlen($inputDescription) < 600 || strlen($inputAge) < 4 || strlen($inputGender) < 7 || strlen($inputName) < 50 || strlen($inputSize) < 10){
             if($inputType == "Canine" || $inputType == "Feline"){
-                $inputBreed = $animalShelter->sanitizeString($_POST["animal-edit-breed"]);
+                $inputBreed = $_POST["animal-edit-breed"];
                 if($_POST["animal-edit-breed"] != "" && (empty($inputBreed) != true) && strlen($inputBreed) < 50){
                     if($inputType == "Canine"){
                         $animal = new Dog($inputName, $inputAge, $inputGender, $inputSize, $inputDescription, $inputImgLink, "DOG", $inputType, $inputBreed);
@@ -46,7 +46,7 @@ if($_POST["animal-edit-type"] != "" && $_POST["animal-edit-size"] != "" && $_POS
                 }
             }
             elseif($inputType == "Avian"){
-                $inputSpecies = $animalShelter->sanitizeString($_POST["animal-edit-species"]);
+                $inputSpecies = $_POST["animal-edit-species"];
                 if($_POST["animal-edit-species"] != "" && (empty($inputSpecies) != true) && strlen($inputSpecies) < 50){
                     $animal = new Bird($inputName, $inputAge, $inputGender, $inputSize, $inputDescription, $inputImgLink, $inputSpecies, $inputType);
                     $animal->SetId($inputId);
