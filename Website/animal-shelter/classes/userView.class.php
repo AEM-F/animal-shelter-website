@@ -9,5 +9,20 @@ class UserView{
             <b>Email:</b> " . $user->GetEmail();
             
     }
+
+    public static function showUserForUserOverview($user){
+        $userIcon = "user-alt";
+        switch ($user->GetRole()) {
+            case 'Admin':
+                $userIcon = "user-shield";
+                break;
+        }
+        echo "<button id=\"user-" . $user->GetId() . "\" class=\"user-container-btn\">
+        <i class=\"fas fa-" . $userIcon . "\"></i>
+            <p class=\"user-container-name push\">
+                ". "Name: " .  $user->GetName() . " " . $user->GetLastName() . "
+            </p>
+    </button>";
+    }
 }
 ?>

@@ -3,26 +3,27 @@ include '../includes/class-autoloader.inc.php';
 session_start();
 $animalShelter = AnimalShelter::GetInstance();
 
-if(isset($_POST["request_type"]) && $_POST["request_type"] == "search"){
-    $searchAnimalName = $_POST["animal_name"];
-    $animalCount = $animalShelter->GetAnimalHelper()->getAllAnimalsByNameCount($searchAnimalName);
-    if($animalCount > 0){
-        $animalCount = json_encode($animalCount);
-        echo $animalCount;
+if(isset($_POST["user_name"]) && $_POST["user_name"] != "" && $_POST["user_page"] != ""){
+    $inputName = $_POST["user_name"];
+    $page = $_POST["user_page"];
+    if(strlen($inputName) < 50 && is_numeric($page)){
+        $userPerPage = 5;
+        $startNr = ($userPerPage * $page) - $userPerPage;
+        $totalUsers = $animalShelter->GetUserHelper()->getAllUsersByNameCount($inputName);
+            if($totalUsers > 0){
+                $usersByLimit = $animalShelter->GetUserHelper()->getUsersByNameAndLimit($startNr,$userPerPage, $inputName);
+                $total_pages=ceil( $totalUsers / $userPerPage );
+                    foreach ($usersByLimit as $user) {
+                        $animalShelter->GetUserView()->showUserForUserOverview($user);
+                    }
+            }
+            else{
+                echo " <div class=\"user-error-overview\"><i class=\"fas fa-exclamation-triangle\"></i> No users found with the given name</div>";
+            }
     }
-    
-}
-
-elseif(isset($_POST["request_type"]) && $_POST["request_type"] == "all"){
-    $animalCount = $animalShelter->GetAnimalHelper()->getAllAnimalsCount();
-        $animalCount = json_encode($animalCount);
-        echo $animalCount;
-}
-
-elseif(isset($_POST["request_type"]) && ($_POST["request_type"] == "Canine" || $_POST["request_type"] == "Feline" || $_POST["request_type"] == "Avian")){
-    $animalCount = count($animalShelter->getAnimalsByType($animalShelter->GetAnimalHelper()->getAllAnimals(), $_POST["request_type"]));
-        $animalCount = json_encode($animalCount);
-        echo $animalCount;
+    else{
+        echo " <div class=\"user-error-overview\"><i class=\"fas fa-exclamation-triangle\"></i> Invalid input</div>";
+    }
 }
 else{
     echo "
@@ -44,5 +45,4 @@ else{
     ";
     echo "<div class=\"cover-full-page\"><div class=\"user-error-overview error-normal\"><i class=\"fas fa-exclamation-triangle\"></i> Error Call</div></div>";
 }
-
 ?>

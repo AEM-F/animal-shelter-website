@@ -2,7 +2,6 @@
 include '../includes/class-autoloader.inc.php';
 session_start();
 $animalShelter = AnimalShelter::GetInstance();
-$user_name;
 if(isset($_SESSION["userId"])){
     $user_id = $_SESSION["userId"];
 }
@@ -29,14 +28,14 @@ if($_POST["animal-edit-type"] != "" && $_POST["animal-edit-size"] != "" && $_POS
                         $animal->SetId($inputId);
                         $animalShelter->GetAnimalHelper()->updateAnimal($animal);
                         $_SESSION["animalEditError"] = false;
-                        header("Location: ../admin/animal-overview.php?page=1");
+                       header("Location: ../admin/animal-overview.php?page=1");
                     }
                     else if($inputType == "Feline"){
                         $animal = new Cat($inputName, $inputAge, $inputGender, $inputSize, $inputDescription, $inputImgLink, "CAT", $inputType, $inputBreed);
                         $animal->SetId($inputId);
                         $animalShelter->GetAnimalHelper()->updateAnimal($animal);
                         $_SESSION["animalEditError"] = false;
-                        header("Location: ../admin/animal-overview.php?page=1");
+                       header("Location: ../admin/animal-overview.php?page=1");
                     }
                 }
                 else{

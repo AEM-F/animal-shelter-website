@@ -2,27 +2,26 @@
 include '../includes/class-autoloader.inc.php';
 session_start();
 $animalShelter = AnimalShelter::GetInstance();
-
-if(isset($_POST["request_type"]) && $_POST["request_type"] == "search"){
-    $searchAnimalName = $_POST["animal_name"];
-    $animalCount = $animalShelter->GetAnimalHelper()->getAllAnimalsByNameCount($searchAnimalName);
-    if($animalCount > 0){
-        $animalCount = json_encode($animalCount);
-        echo $animalCount;
+if(isset($_POST["user_page"]) && $_POST["user_page"] != ""){
+    $page = $_POST["user_page"];
+    $usersPerPage = 5;
+    if(is_numeric($page)){
+        $startNr = ($usersPerPage * $page) - $usersPerPage;
+        $totalUsers = $animalShelter->GetUserHelper()->getAllUsersCount();
+        if($totalUsers > 0){
+            $userByLimit = $animalShelter->GetUserHelper()->getAllUsersByLimit($startNr, $usersPerPage);
+            $total_pages=ceil( $totalUsers / $usersPerPage );
+            foreach ($userByLimit as $user) {
+                echo $animalShelter->GetUserView()->showUserForUserOverview($user);
+            }
+        }
+        else{
+            echo " <div class=\"user-error-overview\"><i class=\"fas fa-exclamation-triangle\"></i> No users found</div>";
+        }
     }
-    
-}
-
-elseif(isset($_POST["request_type"]) && $_POST["request_type"] == "all"){
-    $animalCount = $animalShelter->GetAnimalHelper()->getAllAnimalsCount();
-        $animalCount = json_encode($animalCount);
-        echo $animalCount;
-}
-
-elseif(isset($_POST["request_type"]) && ($_POST["request_type"] == "Canine" || $_POST["request_type"] == "Feline" || $_POST["request_type"] == "Avian")){
-    $animalCount = count($animalShelter->getAnimalsByType($animalShelter->GetAnimalHelper()->getAllAnimals(), $_POST["request_type"]));
-        $animalCount = json_encode($animalCount);
-        echo $animalCount;
+    else{
+        echo " <div class=\"user-error-overview\"><i class=\"fas fa-exclamation-triangle\"></i> Invalid page number</div>";
+    }
 }
 else{
     echo "
@@ -44,5 +43,4 @@ else{
     ";
     echo "<div class=\"cover-full-page\"><div class=\"user-error-overview error-normal\"><i class=\"fas fa-exclamation-triangle\"></i> Error Call</div></div>";
 }
-
 ?>

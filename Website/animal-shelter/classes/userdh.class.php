@@ -94,16 +94,65 @@ class UserDh{
         $results->execute();
     }
 
+    public function removeUserById($id){
+        $sql="DELETE FROM website_shelter_users WHERE `Id`=:id";
+        $result= $this->database->connect()->prepare($sql);
+        $result->bindValue(":id", $id);
+        $result->execute();
+    }
+
+    public function getAllUsersCount(){
+        $sql = "SELECT COUNT(*) FROM website_shelter_users";
+        $results = $this->database->connect()->query($sql)->fetchColumn();
+        return $results;
+    }
+
+    public function getAllUsersByNameCount($name){
+        $sql = "SELECT COUNT(*) FROM website_shelter_users WHERE `Name`=\"{$name}\"";
+        $results = $this->database->connect()->query($sql)->fetchColumn();
+        return $results;
+    }
+
+    public function getAllUsersByLimit($startNr,$nrPerPage){
+        $sql = "SELECT * FROM website_shelter_users ORDER BY `Id` desc LIMIT {$startNr}, {$nrPerPage}";
+        $results = $this->database->connect()->query($sql);
+
+        $obj = null;
+        $users = [];
+        foreach ($results as $row) {
+            $obj = $this->instantiate($row);
+            $users[] = $obj;
+        }
+        return $users;
+    }
+
+    public function getUsersByNameAndLimit($startNr, $nrPerPage, $name){
+        $sql = "SELECT * FROM website_shelter_users WHERE `Name`=\"{$name}\" ORDER BY `Id` DESC LIMIT {$startNr}, {$nrPerPage}";
+        $results = $this->database->connect()->query($sql);
+
+        $obj = null;
+        $users = [];
+        foreach ($results as $row) {
+            $obj = $this->instantiate($row);
+            $users[] = $obj;
+        }
+        return $users;
+    }
+
     private function instantiate($row){
         $obj = null;
-        if($row['Role'] == "Member"){
-            $obj = new Member($row ["Name"], $row ["LastName"], $row ["Email"], $row ["Password"], $row["Role"]);
-            $obj->SetId($row ["Id"]);
+        switch ($row["Role"]) {
+            case 'Member':
+                $obj = new Member($row ["Name"], $row ["LastName"], $row ["Email"], $row ["Password"], $row["Role"]);
+                $obj->SetId($row ["Id"]);
+                break;
+            
+            case 'Admin':
+                $obj = new Admin($row ["Name"], $row ["LastName"], $row ["Email"], $row ["Password"], $row["Role"]);
+                $obj->SetId($row ["Id"]);
+                break;
         }
-        elseif($row["Role"] == "Admin"){
-            $obj = new Admin($row ["Name"], $row ["LastName"], $row ["Email"], $row ["Password"], $row["Role"]);
-            $obj->SetId($row ["Id"]);
-        }
+     
         return $obj;
     }
 

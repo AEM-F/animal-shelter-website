@@ -44,10 +44,10 @@
             </div>
             <div class="slider-nav_item_sub_wrapper">
                 <div class="slider-nav_item_sub">
-                    <a class="slider-link-nav_item" href="#"><i class="fas fa-users"></i> Users overview</a>
+                    <a class="slider-link-nav_item" href="admin-user-overview.php"><i class="fas fa-users"></i> Users overview</a>
                 </div>
                 <div class="slider-nav_item_sub">
-                    <a class="slider-link-nav_item" href="#"><i class="fas fa-user-plus"></i>Add user</a>
+                    <a class="slider-link-nav_item" href="admin-user-add.php"><i class="fas fa-user-plus"></i>Add user</a>
                 </div>
             </div>
         </ul>

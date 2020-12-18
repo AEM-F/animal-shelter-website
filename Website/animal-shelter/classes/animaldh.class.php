@@ -99,7 +99,7 @@ class AnimalDh{
         elseif($animal->GetFamily() == "Avian"){
             $animalSpecies = $animal->GetSpecies();
         }
-        $sql="UPDATE `website_shelter_animals` SET `animal_name`=:aName, `animal_age`=:aAge, `animal_breed`=:aBreed, `animal_sex`=:aSex `animal_size`=:aSize, `animal_description`=:aDescription, `animal_image_link`=:aLink, `animal_species`=:aSpecies, `animal_family`=:aFamily WHERE `animal_id`=:aId";
+        $sql="UPDATE `website_shelter_animals` SET `animal_name`=:aName, `animal_age`=:aAge, `animal_breed`=:aBreed, `animal_sex`=:aSex, `animal_size`=:aSize, `animal_description`=:aDescription, `animal_image_link`=:aLink, `animal_species`=:aSpecies, `animal_family`=:aFamily WHERE `animal_id`=:aId";
         try{
         $results=$this->database->connect()->prepare($sql);
         $results->bindValue(':aId', $animal->GetId());
