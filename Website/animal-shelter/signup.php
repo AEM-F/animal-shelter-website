@@ -1,6 +1,7 @@
 <?php
 include 'includes/class-autoloader.inc.php';
 session_start();
+$animalShelter = AnimalShelter::GetInstance();
 if(isset($_SESSION["userId"])){
     header("Location: index.php");
 }

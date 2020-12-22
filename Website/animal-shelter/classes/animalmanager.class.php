@@ -23,12 +23,20 @@ class AnimalManager{
         return $this->animalDh->getAllAnimalsCount();
     }
 
+    public function getTotalAnimalsByName($name){
+        return $this->animalDh->getAllAnimalsByNameCount($name);
+    }
+
     public function getAllAnimalsByLimit($startNr,$nrPerPage){
             return $this->animalDh->getAllAnimalsByLimit($startNr,$nrPerPage);
     }
 
     public function getTypeAnimalsByLimit($startNr,$nrPerPage,$type){
             return $this->animalDh->getTypeAnimalsByLimit($startNr,$nrPerPage,$type);
+    }
+
+    public function getAnimalsByNameAndLimit($startNr, $nrPerPage, $name){
+            return $this->animalDh->getAnimalsByNameAndLimit($startNr, $nrPerPage, $name);
     }
 
     public function getAnimalsByType($animals, $type){ 
@@ -40,6 +48,15 @@ class AnimalManager{
             }
         }
         return $animalsByType;
+    }
+
+    public function sanitizeString($string){
+
+        $string = strip_tags($string);
+
+        $string = str_replace(" ","",$string);
+
+    return $string;
     }
 
     //Generate HTML section
@@ -75,6 +92,18 @@ class AnimalManager{
   </div>
 </a>
  </article>";
+    }
+
+    public function showAnimalForAnimalOverview($animal){
+        echo "<button id=\"animal-" . $animal->GetId() . "\" class=\"animal-container-btn\">
+        <img src=\"" . $animal->GetImgLink() . "\" alt=\"Animal Photo\">
+        <div class=\"animal-short-info\">
+            <p>Sex: " . $animal->GetSex() . " | Breed: ". $animal->GetBreed() . " | Size: " . $animal->GetSize() . " | Age: " . $animal->GetAge() . "</p>
+        </div>
+            <p class=\"animal-container-name\">
+                " . $animal->GetName() . "
+            </p>
+    </button>";
     }
 }
 ?>

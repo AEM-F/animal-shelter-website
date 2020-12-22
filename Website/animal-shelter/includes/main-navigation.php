@@ -14,12 +14,18 @@
                 <?php
                 if(isset($_SESSION["userId"])){
                     echo "<li class=\"main-nav_item main-nav_item--user\">
-                    <p>" . "Hello, " . $userManager->getUserById($_SESSION["userId"])->GetName() . "</p>
+                    <p>" . "Hello, " . $animalShelter->GetUserHelper()->getUserById($_SESSION["userId"])->GetName() . "</p>
                     </li>";
 
                     echo "<li class=\"main-nav_item main-nav_item--cta\">
                     <a href=\"account-overview.php\"><i class=\"fas fa-user-circle\"></i>Account</a>
                     </li>";
+
+                    if($animalShelter->GetUserHelper()->getUserById($_SESSION["userId"])->GetRole() == "Admin"){
+                        echo "<li class=\"main-nav_item main-nav_item--cta main-nav-item--admin\">
+                    <a href=\"admin/animal-overview.php\" title=\"Travel to admin panel\"><i class=\"fas fa-user-shield\"></i></a>
+                    </li>";
+                    }
                 }
                 ?>
                 <li class="main-nav_item main-nav_item--cta">
@@ -29,7 +35,7 @@
                     <a href="aboutUs.php"><i class="fas fa-info-circle"></i> About us</a>
                 </li>
                 <li class="main-nav_item main-nav_item--cta">
-                    <a href="#l"><i class="fas fa-donate"></i> Donate</a>
+                    <a href="donate.php"><i class="fas fa-donate"></i> Donate</a>
                 </li>
                 <?php
                 if(isset($_SESSION["userId"])){
@@ -51,6 +57,11 @@
         <ul class="mobile-nav_items">
             <?php 
             if(isset($_SESSION["userId"])){
+                if($animalShelter->GetUserHelper()->getUserById($_SESSION["userId"])->GetRole() == "Admin"){
+                    echo "<li class=\"mobile-nav_item mobile-nav_item--cta\">
+                <a href=\"admin/animal-overview.php\" title=\"Travel to admin panel\"><i class=\"fas fa-user-shield\"></i>Admin</a>
+                </li>";
+                }
                 echo "<li class=\"mobile-nav_item mobile-nav_item--cta\">
                 <a href=\"account-overview.php\"><i class=\"fas fa-user-circle\"></i>Account</a>
             </li>";
@@ -63,7 +74,7 @@
                 <a href="aboutUs.php"><i class="fas fa-info-circle"></i> About us</a>
             </li>
             <li class="mobile-nav_item mobile-nav_item--cta">
-                <a href="#l"><i class="fas fa-donate"></i> Donate</a>
+                <a href="donate.php"><i class="fas fa-donate"></i> Donate</a>
             </li>
             <?php
                 if(isset($_SESSION["userId"])){

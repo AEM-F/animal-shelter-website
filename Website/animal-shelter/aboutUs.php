@@ -1,13 +1,13 @@
 <?php   
 include 'includes/class-autoloader.inc.php';
 session_start();
-$userManager = new UserManager();
+$animalShelter = AnimalShelter::GetInstance();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <title>Account-Edit-page</title>
+    <title>About-Us-Page</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +17,11 @@ $userManager = new UserManager();
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIKMiEng7L4L7NtK5lqI0Z1aFp-FwcZNU&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js%22%3E"></script>
     </head>
     <body>
     <div class="backdrop"></div>
@@ -77,12 +82,27 @@ $userManager = new UserManager();
             <div>
 
             </div>
-
+    <div class="find-us-container-wrapper">
+        <h1>Do you want to get in contact with us?</h1>
+        <div class="find-us-container">
+            <div id="google-map"></div>
+            <div class="find-us-container-info">
+                <p>
+                    Animal Shelter:<br>
+                    11am - 7pm Mon - Fri & Sun<br>
+                    9am - 7pm Saturday<br>
+                    Address: Vaasahof 75, 3067 DX Rotterdam, Netherlands<br>
+                    Phone: +31 10 251 1400
+                </p>
+            </div>
+        </div>
+    </div>
                 
             
         
 </div>
     <?php include 'includes/main-footer.php'; ?>
     <script src="js/shared.js"></script>
+    <script src="js/google-map.js"></script>
 </body>
 </html>

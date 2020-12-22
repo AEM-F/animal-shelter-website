@@ -1,5 +1,10 @@
 <?php
 class Dbh{
+    // private $host = "studmysql01.fhict.local";
+    // private $user = "dbi437101";
+    // private $pwd = "1234";
+    // private $dbName = "dbi437101";
+
     private $host = "localhost";
     private $user = "root";
     private $pwd = "";

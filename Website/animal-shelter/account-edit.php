@@ -16,8 +16,8 @@ if(isset($_SESSION["userEditError"])){
     }
 }
 
-$userManager = new UserManager();
-$loggedUser= $userManager->getUserById($user_id);
+$animalShelter = AnimalShelter::GetInstance();
+$loggedUser= $animalShelter->GetUserHelper()->getUserById($user_id);
 ?>
     <!DOCTYPE html>
 <html lang="en">
@@ -81,7 +81,7 @@ $loggedUser= $userManager->getUserById($user_id);
         </div>
     </section>
     <?php include 'includes/main-footer.php'; ?>
-    <script src="js/validate-editinfo.js"></script>
+    <script src="js/validate-editInfo.js"></script>
     <script src="js/shared.js"></script>
 </body>
 </html>

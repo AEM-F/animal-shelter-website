@@ -1,8 +1,7 @@
 <?php
-include 'includes/class-autoloader.inc.php';
-$animalManager = new AnimalManager();
-$userManager = new UserManager();
 session_start();
+include 'includes/class-autoloader.inc.php';
+$animalShelter = AnimalShelter::GetInstance();
 $_SESSION["logInError"]=false;
 $_SESSION["signupError"]=false;
 ?>
@@ -14,7 +13,6 @@ $_SESSION["signupError"]=false;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='shortcut icon' type='image/x-icon' href='images/favicon.ico' />
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet"> 
@@ -49,8 +47,8 @@ $_SESSION["signupError"]=false;
 <div class="new-pet">
     <h1 class="new-pet-title">A new member from our family managed to get a new home</h1>
       <?php 
-      $lastAddedAnimal = $animalManager->getAnimalById($animalManager->getTotalAnimals());
-      $animalManager->showLastAddedAnimal($lastAddedAnimal);
+      $lastAddedAnimal = $animalShelter->GetAnimalHelper()->getAnimalById($animalShelter->GetAnimalHelper()->getAllAnimalsCount());
+      $animalShelter->GetAnimalView()->showLastAddedAnimal($lastAddedAnimal);
       ?>
       
 </div>
@@ -58,12 +56,11 @@ $_SESSION["signupError"]=false;
     <h1 class="f-pet-title">Check out some of our members!</h1>
     <div class="f-pet-cards">
           <?php
-          $animal1 = $animalManager->getAnimalById(1);
-          $animal2 = $animalManager->getAnimalById(2);
-          $animal3 = $animalManager->getAnimalById(3);
-          $animalManager->showAnimal($animal1);
-          $animalManager->showAnimal($animal2);
-          $animalManager->showAnimal($animal3);
+          $animals = $animalShelter->GetAnimalHelper()->getAllAnimalsByLimit(0, 3);
+          foreach ($animals as $animal){
+                $animalShelter->GetAnimalView()->showAnimal($animal);
+          }
+          
           ?>
     </div>
 </div>

@@ -1,15 +1,23 @@
 <?php
 include 'includes/class-autoloader.inc.php';
 session_start();
-$userManager = new UserManager();
-$animalManager = new AnimalManager();
-$totalAnimals = $animalManager->getTotalAnimals();
+$animalShelter = AnimalShelter::GetInstance();
+$totalAnimals = $animalShelter->GetAnimalHelper()->getAllAnimalsCount();
 $animal;
 $animalType;
 if(isset($_GET['aId'])){
     if($_GET['aId'] > 0 || $_GET['aId'] < $totalAnimals){
-        $animal = $animalManager->getAnimalById($_GET['aId']);
-        $animalType = $animal->GetType();
+        $animal = $animalShelter->GetAnimalHelper()->getAnimalById($_GET['aId']);
+        if($animal->GetFamily() == "Canine"){
+            $animalType = "DOG";
+        }
+        elseif($animal->GetFamily() == "Feline"){
+            $animalType = "CAT";
+        }
+        elseif($animal->GetFamily() == "Avian"){
+            $animalType = "BIRD";
+        }
+        
     }
     else{
         header("Location: animal-showcase.php?aId=1");

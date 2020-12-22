@@ -13,10 +13,9 @@ class UserDh{
         $results=$this->database->connect()->prepare($sql);
         $results->execute(['id' => $id]);
 
-        $obj;
+        $obj = null;
         foreach ($results as $row) {
-            $obj = new User($row ["Name"], $row ["LastName"], $row ["Email"], $row ["Password"]);
-            $obj->SetId($row ["Id"]);
+            $obj = $this->instantiate($row);
         }
         return $obj;
     }
@@ -26,10 +25,9 @@ class UserDh{
         $results=$this->database->connect()->prepare($sql);
         $results->execute(['email' => $email]);
 
-        $obj;
+        $obj = null;
         foreach ($results as $row) {
-            $obj = new User($row ["Name"], $row ["LastName"], $row ["Email"], $row ["Password"]);
-            $obj->SetId($row ["Id"]);
+            $obj = $this->instantiate($row);
         }
         return $obj;
     }
@@ -67,25 +65,46 @@ class UserDh{
     }
 
     public function updateUser($user){
-        $sql="UPDATE `website_shelter_users` SET `Name`=:uname, `LastName`=:lastName, `Email`=:email, `Password`=:upassword WHERE `Id`=:id";
-        $results=$this->database->connect()->prepare($sql);
+        $sql="UPDATE `website_shelter_users` SET `Name`=:uname, `LastName`=:lastName, `Email`=:email, `Password`=:upassword, `Role`=:urole WHERE `Id`=:id";
+        try{
+            $results=$this->database->connect()->prepare($sql);
         $results->bindValue(':id', $user->GetId());
         $results->bindValue(':uname', $user->GetName());
         $results->bindValue(':lastName', $user->GetLastName());
         $results->bindValue(':email', $user->GetEmail());
         $results->bindValue(':upassword', $user->GetPassword());
+        $results->bindValue(':urole', $user->GetRole());
         $results->execute();
+        }
+        catch(Exception $e){
+            return false;
+        }
+        return true;
     }
 
     public function insertUser($user){
-        $sql="INSERT INTO `website_shelter_users` (`Name`, LastName, Email, `Password`) VALUES (:uname, :lastName, :email, :upassword)";
+        $sql="INSERT INTO `website_shelter_users` (`Name`, LastName, Email, `Password`, `Role`) VALUES (:uname, :lastName, :email, :upassword, :urole)";
         $results=$this->database->connect()->prepare($sql);
 
         $results->bindValue(':uname', $user->GetName());
         $results->bindValue(':lastName', $user->GetLastName());
         $results->bindValue(':email', $user->GetEmail());
         $results->bindValue(':upassword', $user->GetPassword());
+        $results->bindValue(':urole', $user->GetRole());
         $results->execute();
+    }
+
+    private function instantiate($row){
+        $obj = null;
+        if($row['Role'] == "Member"){
+            $obj = new Member($row ["Name"], $row ["LastName"], $row ["Email"], $row ["Password"], $row["Role"]);
+            $obj->SetId($row ["Id"]);
+        }
+        elseif($row["Role"] == "Admin"){
+            $obj = new Admin($row ["Name"], $row ["LastName"], $row ["Email"], $row ["Password"], $row["Role"]);
+            $obj->SetId($row ["Id"]);
+        }
+        return $obj;
     }
 
 }
