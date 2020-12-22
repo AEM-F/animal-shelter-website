@@ -23,7 +23,7 @@ if (isset($_POST["user-edit-btn"])) {
         header($url);
     }
     else{
-        header("Location: ../admin/user-overview.php?page=1");
+        header("Location: ../admin/admin-user-overview.php?page=1");
     }
     
 }
@@ -43,6 +43,6 @@ if(isset($_POST["user_remove_btn"]) && $_POST["user_remove_btn"] == "clicked"){
         }
         $animalShelter->GetUserHelper()->removeUserById($selectedUserId);
     }
-    header("Location: ../admin/user-overview.php?page=1");
+    header("Location: ../admin/admin-user-overview.php?page=1");
     
 }

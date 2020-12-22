@@ -23,8 +23,9 @@ $_SESSION["signupError"]=false;
     <?php include 'includes/main-navigation.php'; ?>
 <section class ="main-index-content">
 <div class="adv-showcase">
-    <button class="adv-donate-btn">
-        <i class="fas fa-donate"></i>Donate</button>
+    <a href="donate.php" class="adv-donate-btn">
+        <i class="fas fa-donate"></i>Donate
+    </a>
 </div>
 <div class="d-info">
     <div class="d-medicine">

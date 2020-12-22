@@ -2,7 +2,7 @@
     <nav>
         <div class="activity-tab">
             <p>Do you want to know more of our activity?</p>
-            <button id="activity-find-out-btn">Find out</button>
+            <a href="aboutUs.php" id="activity-find-out-btn">Find out</a>
         <section id="social-features">
             <div class="social-feature-list">
                     <div class="social-feature-image">

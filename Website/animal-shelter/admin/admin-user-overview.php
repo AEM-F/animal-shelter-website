@@ -12,19 +12,22 @@ if(isset($_SESSION["userId"])){
 else{
     header("Location: ../index.php");
 }
+$totalUsers = $animalShelter->GetUserHelper()->getAllUsersCount();
+$usersPerPage = 5;
+$total_pages=ceil( $totalUsers / $usersPerPage );
 // page is the current page, if there's nothing set, default is page 1
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 if(isset($_GET['page'])){
     if($_GET['page'] > $total_pages || $_GET['page'] <= 0){
-        header("Location: animal-overview.php");
+        header("Location: admin-user-overview.php");
     }
 }
 
 if(isset($_SESSION["userEditError"]) && $_SESSION["userEditError"] == true){
     $_SESSION["userEditError"]=false;
 }
-if(isset($_SESSION["animalAddError"]) && $_SESSION["userEditError"] == true){
-    $_SESSION["userEditError"]=false;
+if(isset($_SESSION["userAdmAddError"]) && $_SESSION["userAdmAddError"] == true){
+    $_SESSION["userAdmAddError"]=false;
 }
 
 ?>

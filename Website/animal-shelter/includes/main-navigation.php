@@ -35,7 +35,7 @@
                     <a href="aboutUs.php"><i class="fas fa-info-circle"></i> About us</a>
                 </li>
                 <li class="main-nav_item main-nav_item--cta">
-                    <a href="#l"><i class="fas fa-donate"></i> Donate</a>
+                    <a href="donate.php"><i class="fas fa-donate"></i> Donate</a>
                 </li>
                 <?php
                 if(isset($_SESSION["userId"])){
@@ -74,7 +74,7 @@
                 <a href="aboutUs.php"><i class="fas fa-info-circle"></i> About us</a>
             </li>
             <li class="mobile-nav_item mobile-nav_item--cta">
-                <a href="#l"><i class="fas fa-donate"></i> Donate</a>
+                <a href="donate.php"><i class="fas fa-donate"></i> Donate</a>
             </li>
             <?php
                 if(isset($_SESSION["userId"])){

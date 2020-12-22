@@ -12,6 +12,9 @@ if(isset($_SESSION["userId"])){
 else{
     header("Location: ../index.php");
 }
+$animalsPerPage = 5;
+$totalAnimals = $animalShelter->GetAnimalHelper()->getAllAnimalsCount();
+$total_pages=ceil( $totalAnimals / $animalsPerPage );
 // page is the current page, if there's nothing set, default is page 1
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 if(isset($_GET['page'])){
